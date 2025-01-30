@@ -1,0 +1,51 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+using UnityEngine.Serialization;
+
+public class SawbladeObject : MonoBehaviour
+{
+    [SerializeField] private float animationDuration = 1f;
+    [SerializeField] private float speedMove = 2f;
+    private Tween _tween = null;
+    private Vector3 _rotation = Vector3.zero;
+    private float _moveInput = 1f;
+
+    public float MoveInput
+    {
+        get => _moveInput;
+        set
+        {
+            _moveInput = Math.Clamp(value, -1, 1);
+            TurnRotate();
+        }
+    }
+    void Start()
+    {
+        _rotation = new Vector3(0, 0, 180);
+        
+        // Если пила двигается вправо то угол вращения -180
+        _tween = transform.DORotate(_rotation * -_moveInput, animationDuration, RotateMode.LocalAxisAdd)
+            .SetEase(Ease.Linear)
+            .SetLoops(-1, LoopType.Restart);
+    }
+
+    void FixedUpdate()
+    {
+        transform.position += Vector3.right * _moveInput * speedMove * Time.fixedDeltaTime;
+    }
+    
+    private void TurnRotate()
+    {
+        if (_tween is not null)
+        {
+            _tween.Kill();
+        }
+
+        _tween = transform.DORotate(_rotation * -_moveInput, animationDuration, RotateMode.LocalAxisAdd)
+            .SetEase(Ease.Linear)
+            .SetLoops(-1, LoopType.Restart);
+    }
+}
