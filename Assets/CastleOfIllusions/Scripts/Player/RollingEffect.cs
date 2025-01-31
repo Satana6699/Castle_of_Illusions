@@ -12,10 +12,6 @@ namespace CastleOfIllusions.Scripts
         [SerializeField] private float rollDuration = 1f; 
         [SerializeField] private float rollCooldown = 1f; 
     
-        [Header("Layers Settings")]
-        [SerializeField] private LayerMask playerLayer;
-        [SerializeField] private LayerMask enemyLayer;
-    
         private Rigidbody _rigidbody = null;
         private Animator _animator = null;
         private PlayerController _playerController = null;
@@ -74,7 +70,6 @@ namespace CastleOfIllusions.Scripts
             _isRolling = isRolling;
             _playerController.enabled = !isRolling;
             RollAnimation(isRolling);
-            Physics.IgnoreLayerCollision(playerLayer, enemyLayer, isRolling);
             if (isRolling)
             {
                 _collider.height = 0.2f;

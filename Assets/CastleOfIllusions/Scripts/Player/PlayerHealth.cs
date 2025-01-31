@@ -8,51 +8,29 @@ namespace CastleOfIllusions.Scripts
     public class PlayerHealth : MonoBehaviour
     {
         [Header("Health Stats")]
-        [SerializeField] private float health = 100f;
-        private float _maxHealth;
-        [SerializeField] private Image healthBar;
-    
+        [SerializeField] protected float health = 100f;
+        [SerializeField] protected ParticleSystem damageParticles;
+        
         [Header("Invulnerable Stats")]
         [SerializeField] private float invulnerableDuration = 0.5f;
         [SerializeField] private float blinkSpeed = 5f;
+        [SerializeField] protected Image healthBar;
         [SerializeField] private Renderer render;
+        
+        private RollingEffect _rollingEffect;
+        private float _maxHealth;
         private bool _isInvulnerable = false;
         private float _timeInvulnerable = 0f;
-        [CanBeNull] private RollingEffect _rollingEffect;
-    
-        public enum KnockbackType
-        {
-            Linnear,
-            Horizontal,
-            Parabolic,
-            Sqrt
-        }
-    
-        private Dictionary<KnockbackType, System.Func<float, float>> _knockbacks = 
-            new Dictionary<KnockbackType, System.Func<float, float>>();
-        private Rigidbody _rigidbody;
-        private StunEffect _stunEffect;
-    
-
-        void Awake()
-        {
-            _knockbacks.Add(KnockbackType.Linnear, (float x) => x);
-            _knockbacks.Add(KnockbackType.Horizontal, (float x) => 0);
-            _knockbacks.Add(KnockbackType.Parabolic, (float x) =>  x * x);
-            _knockbacks.Add(KnockbackType.Sqrt, Mathf.Sqrt );
-        }
-    
+        
         void Start()
         {
-            _rigidbody = GetComponent<Rigidbody>();
-            _stunEffect = GetComponent<StunEffect>();
-            _rollingEffect = GetComponent<RollingEffect>();
             _maxHealth = health;
+            _rollingEffect = GetComponent<RollingEffect>();
         }
 
         void Update()
         {
-            StunnedEffect();
+            InvulnerableEffect();
         
             if (_isInvulnerable)
             {
@@ -65,7 +43,7 @@ namespace CastleOfIllusions.Scripts
                 _timeInvulnerable = 0f;
             }
         }
-    
+        
         public void TakeDamage(float damage)
         {
             if (_isInvulnerable)
@@ -73,50 +51,30 @@ namespace CastleOfIllusions.Scripts
                 return;
             }
         
-            if (_rollingEffect is not null && _rollingEffect.CheckRoll())
+            if (_rollingEffect != null && _rollingEffect.CheckRoll())
             {
                 return;
             }
-        
-            health -= damage;
+            
             _isInvulnerable = true;
+            
+            health -= damage;
         
             if (health <= 0)
             {
                 health = 0;
+                Death();
             }
-        
+            
             UpdateHealthBar();
         }
-
-        /*
-    public void TakeDamageAndPushBack(Vector3 hitPoint, float damage, float knockbackForce, KnockbackType knockbackType = KnockbackType.Linnear)
-    {
-        if (_isInvulnerable)
-        {
-            return;
-        }
         
-        TakeDamage(damage);
-        
-        _stunEffect?.Stunned();
-
-        if (_rigidbody != null)
-        {
-            Vector3 knockbackDirection = (transform.position - hitPoint).normalized;
-            knockbackDirection *= knockbackForce;
-            knockbackDirection.y = _knockbacks[knockbackType].Invoke(knockbackDirection.x);
-            _rigidbody.AddForce(knockbackDirection, ForceMode.VelocityChange);
-        }
-    }
-    */
-    
         private void UpdateHealthBar()
         {
             healthBar.fillAmount = health / _maxHealth;
         }
-    
-        private void StunnedEffect()
+        
+        private void InvulnerableEffect()
         {
             if (render is null)
             {
@@ -141,6 +99,11 @@ namespace CastleOfIllusions.Scripts
                     material.color = color;
                 }
             }
+        }
+        
+        protected virtual void Death()
+        {
+            Destroy(gameObject);
         }
     }
 }

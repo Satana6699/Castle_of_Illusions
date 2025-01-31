@@ -8,7 +8,6 @@ namespace CastleOfIllusions.Scripts
     {
         [Header("Move Stats")]
         [SerializeField] private float moveSpeed = 10f; 
-        [SerializeField] private float acceleration = 5f;
         private float _moveInput;
     
         public bool FacingRight { get; private set; } = true;
@@ -22,6 +21,10 @@ namespace CastleOfIllusions.Scripts
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float radiusGround = 0.1f;
     
+        [Header("Layers Settings")]
+        [SerializeField] private LayerMask playerLayer;
+        [SerializeField] private LayerMask enemyLayer;
+        
         private Animator _animator;
         private Rigidbody _rigidbody;
         private PlayerHealth _playerHealth;
@@ -32,38 +35,37 @@ namespace CastleOfIllusions.Scripts
             _animator = GetComponent<Animator>();
             _playerHealth = GetComponent<PlayerHealth>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            
+            int playerLayerIndex = Mathf.RoundToInt(Mathf.Log(playerLayer.value, 2));
+            int enemyLayerIndex = Mathf.RoundToInt(Mathf.Log(enemyLayer.value, 2));
+            Physics.IgnoreLayerCollision(playerLayerIndex, enemyLayerIndex, true);
         }
+        
+        private void Update()
+        {
+            CheckGround();
 
+            _animator.SetBool("Grounded", _isGrounded);
+        
+            float normalisedAcceleration = _moveInput;
+            _animator.SetFloat("MoveSpeed", Math.Abs(normalisedAcceleration));
+        
+            Jump();
+            Rotate();
+        }
+        
         private void FixedUpdate()
         {
             Move();
-
-            Rotate();
         }
 
         private void Move()
         {
-            CheckGround();
-        
             _moveInput = Input.GetAxis("Horizontal");
-
-            _rigidbody.AddForce(new Vector3(_moveInput * acceleration, 0f, 0f), ForceMode.Acceleration);
-        
-            Vector3 velocity = _rigidbody.velocity;
-            velocity.x = Mathf.Clamp(velocity.x, -moveSpeed, moveSpeed);
-            _rigidbody.velocity = velocity;
-        }
-
-        private void Update()
-        {
-            _animator.SetBool("Grounded", _isGrounded);
-        
-            float normalisedAcceleration = Mathf.Clamp(_moveInput * acceleration / moveSpeed, -1f, 1f);
-            _animator.SetFloat("MoveSpeed", Math.Abs(normalisedAcceleration));
-        
-            Jump();
-
-            FreezMoveForZ();
+            Vector3 movePosition = transform.forward * Math.Abs(_moveInput) * moveSpeed * Time.fixedDeltaTime;
+            //transform.position += movePosition;
+            Vector3 newPosition = transform.position + movePosition;
+            _rigidbody.MovePosition(newPosition);
         }
 
         private void Jump()
@@ -73,8 +75,6 @@ namespace CastleOfIllusions.Scripts
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, _rigidbody.velocity.z);
             }
         }
-
-        private void FreezMoveForZ() => transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         private void Rotate()
         {

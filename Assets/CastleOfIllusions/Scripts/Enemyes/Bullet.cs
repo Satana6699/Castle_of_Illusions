@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using CastleOfIllusions.Scripts;
 using UnityEngine;
 
@@ -10,14 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float timeLive = 2f;
     [SerializeField] private new ParticleSystem particleSystem = null;
 
-    private MeshRenderer _meshRenderer = null;
     private float _timerLive = 0f;
-    private bool _isDead = false;
-    
-    private void Start()
-    {
-        _meshRenderer = GetComponent<MeshRenderer>();
-    }
     
     private void Update()
     {
@@ -25,36 +16,26 @@ public class Bullet : MonoBehaviour
         
         if (_timerLive >= timeLive)
         {
-            StartCoroutine(Death());
+            Death();
         }
         
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    private IEnumerator Death()
+    private void Death()
     {
-        if (_isDead)
-            yield break;
-        
-        _isDead = true;
-        _meshRenderer.enabled = false;
-        var particle = Instantiate(particleSystem, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(particleSystem.main.duration);
-        particle.Stop();
-        Destroy(particle);
+        Instantiate(particleSystem, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet ^ OnTriggerEnter");
-        
         if (other.CompareTag("Player"))
         {
-            var playerStats = other.gameObject.GetComponent<PlayerHealth>();
-            playerStats?.TakeDamage(damage);
+            var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            playerHealth?.TakeDamage(damage);
         }
         
-        StartCoroutine(Death());
+        Death();
     }
 }

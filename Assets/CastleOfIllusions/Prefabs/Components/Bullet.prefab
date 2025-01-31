@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3496353652186955749}
   - component: {fileID: 4179674508496905261}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  speed: 10
+  speed: 15
   timeLive: 2
   particleSystem: {fileID: 1065726155443429625, guid: 7fd9dc28bba4e9a4bb18b9c5e05689a9,
     type: 3}

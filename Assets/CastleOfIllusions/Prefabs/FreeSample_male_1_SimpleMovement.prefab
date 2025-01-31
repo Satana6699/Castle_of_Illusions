@@ -236,17 +236,17 @@ PrefabInstance:
     - target: {fileID: 707136990861001141, guid: d674b564acadde849a2cd28ce63525a8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.36
+      value: -2.35
       objectReference: {fileID: 0}
     - target: {fileID: 707136990861001141, guid: d674b564acadde849a2cd28ce63525a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.456
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 707136990861001141, guid: d674b564acadde849a2cd28ce63525a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 707136990861001141, guid: d674b564acadde849a2cd28ce63525a8,
         type: 3}
@@ -544,8 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  acceleration: 40
-  jumpForce: 4
+  jumpForce: 4.5
   groundCheck: {fileID: 5734385936154178510}
   groundLayer:
     serializedVersion: 2

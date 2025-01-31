@@ -46,17 +46,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeTrap.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\EnemyHealth.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryLogic.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\RollingEffect.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\StunEffect.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\FreeCameraLogic.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\ChairBattleController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bullet.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryWearLogic.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SpikeAtack.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\DartTrap.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\CameraShake.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerBattleController.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\ParticleTimeLive.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleSampleCharacterControl.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\Spike.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeObject.cs" />

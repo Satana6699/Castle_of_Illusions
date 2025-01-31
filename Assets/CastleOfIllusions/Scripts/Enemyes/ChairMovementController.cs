@@ -31,21 +31,21 @@ namespace CastleOfIllusions.Scripts
             Vector3 newPosition = _rigidbody.position + Vector3.right * _moveInput * moveSpeed * Time.fixedDeltaTime;
             _rigidbody.MovePosition(newPosition);
         
+            Rotate();
+        }
+    
+        private void Rotate()
+        {
             if (_moveInput > 0 && !_facingRight)
             {
-                Rotate(90);
+                transform.rotation = Quaternion.Euler(0, 90, 0);
                 _facingRight = true;
             }
             else if (_moveInput < 0 && _facingRight)
             {
-                Rotate(-90);
+                transform.rotation = Quaternion.Euler(0, -90, 0);
                 _facingRight = false;
             }
-        }
-    
-        private void Rotate(float angle)
-        {
-            transform.rotation = Quaternion.Euler(0, angle, 0);
         }
     }
 }
