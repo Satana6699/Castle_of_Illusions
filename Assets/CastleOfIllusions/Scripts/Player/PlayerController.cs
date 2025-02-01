@@ -21,10 +21,6 @@ namespace CastleOfIllusions.Scripts
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float radiusGround = 0.1f;
     
-        [Header("Layers Settings")]
-        [SerializeField] private LayerMask playerLayer;
-        [SerializeField] private LayerMask enemyLayer;
-        
         private Animator _animator;
         private Rigidbody _rigidbody;
         private PlayerHealth _playerHealth;
@@ -35,10 +31,6 @@ namespace CastleOfIllusions.Scripts
             _animator = GetComponent<Animator>();
             _playerHealth = GetComponent<PlayerHealth>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-            
-            int playerLayerIndex = Mathf.RoundToInt(Mathf.Log(playerLayer.value, 2));
-            int enemyLayerIndex = Mathf.RoundToInt(Mathf.Log(enemyLayer.value, 2));
-            Physics.IgnoreLayerCollision(playerLayerIndex, enemyLayerIndex, true);
         }
         
         private void Update()
@@ -63,7 +55,6 @@ namespace CastleOfIllusions.Scripts
         {
             _moveInput = Input.GetAxis("Horizontal");
             Vector3 movePosition = transform.forward * Math.Abs(_moveInput) * moveSpeed * Time.fixedDeltaTime;
-            //transform.position += movePosition;
             Vector3 newPosition = transform.position + movePosition;
             _rigidbody.MovePosition(newPosition);
         }

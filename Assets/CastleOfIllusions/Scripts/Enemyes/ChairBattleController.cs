@@ -8,13 +8,13 @@ namespace CastleOfIllusions.Scripts
     {
         [SerializeField] private float damage = 10f;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerStay(Collider other)
         {
-            Debug.Log("Колизия табуретка");
-            if (collision.gameObject.CompareTag("Player"))
+            Debug.Log("Trigger табуретка");
+            if (other.CompareTag("Player"))
             {
-                Debug.Log("Колизия табуретка и игрок");
-                collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                Debug.Log("Trigger табуретка и игрок");
+                other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             }
         }
     }

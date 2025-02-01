@@ -8,7 +8,7 @@ public class SawbladeAtack : MonoBehaviour
 {
     [SerializeField] private float damage = 10f;
 
-    private void OnTriggerStay(Collider other)
+        private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {

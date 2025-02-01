@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CastleOfIllusions.Scripts
 {
     public class ChairMovementController : MonoBehaviour
     {
         [SerializeField] private float leftPredelPositionForX;
-        [SerializeField] private float righrPredelPositionForY;
+        [SerializeField] private float righrPredelPositionForX;
         [SerializeField] private float moveSpeed = 5f;
     
         private bool _facingRight = true;
@@ -23,7 +24,7 @@ namespace CastleOfIllusions.Scripts
             {
                 _moveInput = 1;
             }
-            else if (_moveInput == 1 && transform.position.x >= righrPredelPositionForY)
+            else if (_moveInput == 1 && transform.position.x >= righrPredelPositionForX)
             {
                 _moveInput = -1;
             }
