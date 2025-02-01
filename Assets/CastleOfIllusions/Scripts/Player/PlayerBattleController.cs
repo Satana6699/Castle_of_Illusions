@@ -10,7 +10,7 @@ namespace CastleOfIllusions.Scripts
         [SerializeField] private Animator swordAnimator;
 
         private float _timerAtack = 0f;
-    
+
         void Start()
         {
             if (swordAnimator == null)

@@ -10,10 +10,8 @@ namespace CastleOfIllusions.Scripts
 
         private void OnTriggerStay(Collider other)
         {
-            Debug.Log("Trigger табуретка");
             if (other.CompareTag("Player"))
             {
-                Debug.Log("Trigger табуретка и игрок");
                 other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             }
         }

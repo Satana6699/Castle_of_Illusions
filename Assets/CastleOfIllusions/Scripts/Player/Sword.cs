@@ -8,13 +8,19 @@ public class Sword : MonoBehaviour
 {
     [SerializeField] private float damage;
     
+    public int Score { get; private set; } = 0;
+
     private void OnTriggerEnter(Collider other)
     {
         
         if (other.CompareTag("Enemy"))
         {
             var enemy = other.gameObject.GetComponent<EnemyHealth>();
-            enemy?.TakeDamage(damage);
+            
+            if (enemy is not null)
+            {
+                Score += enemy.TakeDamage(damage);
+            }
         }
     }
 }

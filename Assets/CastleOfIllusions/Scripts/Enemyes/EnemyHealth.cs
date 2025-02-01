@@ -11,7 +11,7 @@ namespace CastleOfIllusions.Scripts
         [SerializeField] protected float health = 100f;
         [SerializeField] protected ParticleSystem damageParticles;
         
-        public void TakeDamage(float damage)
+        public int TakeDamage(float damage)
         {
             health -= damage;
         
@@ -21,7 +21,10 @@ namespace CastleOfIllusions.Scripts
             {
                 health = 0;
                 Death();
+                return 1;
             }
+
+            return 0;
         }
 
         private void Death()
