@@ -7,11 +7,15 @@ using UnityEngine.Serialization;
 
 public class SawbladeObject : MonoBehaviour
 {
+    [Header("Animation Settings")]
     [SerializeField] private float animationDuration = 1f;
+
+    [Header("Movement Settings")]
     [SerializeField] private float speedMove = 2f;
+    private float _moveInput = 1f;
+
     private Tween _tween = null;
     private Vector3 _rotation = Vector3.zero;
-    private float _moveInput = 1f;
 
     public float MoveInput
     {

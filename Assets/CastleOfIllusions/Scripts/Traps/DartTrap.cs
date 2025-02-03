@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class DartTrap : MonoBehaviour
 {
+    [Header("Bullet Settings")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletStartPosition;
-    [SerializeField] private float coolDownTrap = 2f;
 
+    [Header("Trap Settings")]
+    [SerializeField] private float coolDownTrap = 2f;
     private float _timerCoolDownTrap = 0f;
-    private Vector3 _startPosition;
+
     private bool _isActive = false;
-    
+    private Vector3 _startPosition;
+
     void Start()
     {
         _startPosition = transform.position;

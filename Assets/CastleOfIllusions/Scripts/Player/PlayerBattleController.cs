@@ -1,40 +1,39 @@
 using UnityEngine;
 
-namespace CastleOfIllusions.Scripts
+public class PlayerBattleController : MonoBehaviour
 {
-    public class PlayerBattleController : MonoBehaviour
+    [Header("Attack Settings")]
+    [SerializeField] private float speedAtack = 10f;
+    private float _timerAtack = 0f;
+
+    [Header("Sword Settings")]
+    [SerializeField] private GameObject sword;
+    [SerializeField] private Animator swordAnimator;
+
+
+    void Start()
     {
-        [SerializeField] private float speedAtack = 10f;
-    
-        [SerializeField] private GameObject sword;
-        [SerializeField] private Animator swordAnimator;
-
-        private float _timerAtack = 0f;
-
-        void Start()
+        if (swordAnimator == null)
         {
-            if (swordAnimator == null)
-            {
-                swordAnimator = sword.GetComponent<Animator>();
-            }
-
-            _timerAtack = speedAtack;
+            swordAnimator = sword.GetComponent<Animator>();
         }
+
+        _timerAtack = speedAtack;
+    }
     
-        void Update()
-        {
-            _timerAtack += Time.deltaTime;
+    void Update()
+    {
+        _timerAtack += Time.deltaTime;
         
-            if (Input.GetKeyDown(KeyCode.Mouse0) && _timerAtack >= speedAtack)
-            {
-                Atack();
-                _timerAtack = 0f;
-            }
-        }
-
-        private void Atack()
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _timerAtack >= speedAtack)
         {
-            swordAnimator.SetTrigger("Atack");
+            Atack();
+            _timerAtack = 0f;
         }
+    }
+
+    private void Atack()
+    {
+        swordAnimator.SetTrigger("Atack");
     }
 }

@@ -1,30 +1,31 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace CastleOfIllusions.Scripts
-{
-    public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
     {
-        [Header("Health Stats")]
+        [Header("Health Settings")]
         [SerializeField] protected float health = 100f;
-        [SerializeField] protected ParticleSystem damageParticles;
-        
-        [Header("Invulnerable Stats")]
+        [SerializeField] private float maxHealth;
+
+        [Header("Invulnerability Settings")]
         [SerializeField] private float invulnerableDuration = 0.5f;
         [SerializeField] private float blinkSpeed = 5f;
+        [SerializeField] private bool isInvulnerable = false;
+        [SerializeField] private float timeInvulnerable = 0f;
+
+        [Header("UI Elements")]
         [SerializeField] protected Image healthBar;
+
+        [Header("Effects")]
         [SerializeField] private Renderer render;
-        
         private RollingEffect _rollingEffect;
-        private float _maxHealth;
-        private bool _isInvulnerable = false;
-        private float _timeInvulnerable = 0f;
-        
+
         void Start()
         {
-            _maxHealth = health;
+            maxHealth = health;
             _rollingEffect = GetComponent<RollingEffect>();
         }
 
@@ -32,21 +33,21 @@ namespace CastleOfIllusions.Scripts
         {
             InvulnerableEffect();
         
-            if (_isInvulnerable)
+            if (isInvulnerable)
             {
-                _timeInvulnerable += Time.deltaTime;
+                timeInvulnerable += Time.deltaTime;
             }
 
-            if (_timeInvulnerable >= invulnerableDuration)
+            if (timeInvulnerable >= invulnerableDuration)
             {
-                _isInvulnerable = false;
-                _timeInvulnerable = 0f;
+                isInvulnerable = false;
+                timeInvulnerable = 0f;
             }
         }
         
         public void TakeDamage(float damage)
         {
-            if (_isInvulnerable)
+            if (isInvulnerable)
             {
                 return;
             }
@@ -56,7 +57,7 @@ namespace CastleOfIllusions.Scripts
                 return;
             }
             
-            _isInvulnerable = true;
+            isInvulnerable = true;
             
             health -= damage;
         
@@ -71,7 +72,7 @@ namespace CastleOfIllusions.Scripts
         
         private void UpdateHealthBar()
         {
-            healthBar.fillAmount = health / _maxHealth;
+            healthBar.fillAmount = health / maxHealth;
         }
         
         private void InvulnerableEffect()
@@ -81,7 +82,7 @@ namespace CastleOfIllusions.Scripts
                 return;
             }
         
-            if (_isInvulnerable)
+            if (isInvulnerable)
             {
                 foreach (var material in render.materials)
                 {
@@ -106,4 +107,3 @@ namespace CastleOfIllusions.Scripts
             Destroy(gameObject);
         }
     }
-}

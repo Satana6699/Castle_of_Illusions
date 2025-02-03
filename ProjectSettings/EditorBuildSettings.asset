@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest.unity
     guid: 2991676e6fb59d74b86fbafe05558ee9
+  - enabled: 1
+    path: Assets/Scenes/Roof.unity
+    guid: 4add9dd5e1c00a344895653edf4123ea
+  - enabled: 1
+    path: Assets/Scenes/Tower.unity
+    guid: b6699f17fde9f9f45ac8a84d8270a0e5
   m_configObjects: {}

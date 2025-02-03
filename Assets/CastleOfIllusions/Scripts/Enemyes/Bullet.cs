@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Bullet Settings")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private float speed = 1f;
     [SerializeField] private float timeLive = 2f;
+
+    [Header("Particle Settings")]
     [SerializeField] private new ParticleSystem particleSystem = null;
 
     private float _timerLive = 0f;
-    
+
     private void Update()
     {
         _timerLive += Time.deltaTime;

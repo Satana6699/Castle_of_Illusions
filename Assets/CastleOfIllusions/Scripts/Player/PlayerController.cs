@@ -1,32 +1,36 @@
 using System;
 using UnityEngine;
 
-namespace CastleOfIllusions.Scripts
-{
-    [RequireComponent(typeof(PlayerHealth))]
-    public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(PlayerHealth))]
+public class PlayerController : MonoBehaviour
     {
-        [Header("Move Stats")]
+        [Header("Movement Settings")]
         [SerializeField] private float moveSpeed = 10f; 
+        [SerializeField] private string playerLayer = "Player"; 
+        [SerializeField] private string enemyLayer = "Enemy"; 
         private float _moveInput;
-    
         public bool FacingRight { get; private set; } = true;
-    
-        [Header("Jump Stats")]
+
+        [Header("Jump Settings")]
         [SerializeField] private float jumpForce = 100f;
         private bool _isGrounded = false;
 
-        [Header("Настройки земли")]
+        [Header("Ground Detection")]
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float radiusGround = 0.1f;
-    
+
+        [Header("Components")]
         private Animator _animator;
         private Rigidbody _rigidbody;
         private PlayerHealth _playerHealth;
+
     
         private void Start()
         {
+            Physics.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), LayerMask.NameToLayer(enemyLayer),
+                true);
+            
             _rigidbody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
             _playerHealth = GetComponent<PlayerHealth>();
@@ -56,6 +60,7 @@ namespace CastleOfIllusions.Scripts
             _moveInput = Input.GetAxis("Horizontal");
             Vector3 movePosition = transform.forward * Math.Abs(_moveInput) * moveSpeed * Time.fixedDeltaTime;
             Vector3 newPosition = transform.position + movePosition;
+            newPosition.z = 0f;
             _rigidbody.MovePosition(newPosition);
         }
 
@@ -83,4 +88,3 @@ namespace CastleOfIllusions.Scripts
 
         private void CheckGround() => _isGrounded = Physics.CheckSphere(groundCheck.position, radiusGround, groundLayer);
     }
-}

@@ -1,23 +1,26 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CastleOfIllusions.Scripts
-{
-    [RequireComponent(typeof(PlayerController))]
-    [RequireComponent(typeof(CapsuleCollider))]
-    public class RollingEffect : MonoBehaviour
+[RequireComponent(typeof(PlayerController))] 
+[RequireComponent(typeof(CapsuleCollider))]
+public class RollingEffect : MonoBehaviour
     {
-        [Header("Rolling Stats")]
+        [Header("Rolling Settings")]
         [SerializeField] private float rollSpeed = 5f;
-        [SerializeField] private float rollDuration = 1f; 
-        [SerializeField] private float rollCooldown = 1f; 
-    
+        [SerializeField] private float rollDuration = 1f;
+        [SerializeField] private float rollCooldown = 1f;
+
+        [Header("Character Components")]
         private Rigidbody _rigidbody = null;
         private Animator _animator = null;
         private PlayerController _playerController = null;
         private CapsuleCollider _collider = null;
+
+        [Header("Rolling State")]
         private bool _isRolling = false;
         private float _rollTime = 0f;
+
+        [Header("Collider Settings")]
         private float _baseHeightCollider;
         private Vector3 _baseCenterCollider;
 
@@ -88,4 +91,3 @@ namespace CastleOfIllusions.Scripts
             //_animator.SetBool("Roll", isRolled);
         }
     }
-}

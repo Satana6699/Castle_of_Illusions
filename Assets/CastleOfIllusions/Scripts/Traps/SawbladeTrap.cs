@@ -5,8 +5,11 @@ using UnityEngine.Serialization;
 
 public class SawbladeTrap : MonoBehaviour
 {
+    [Header("Saw Blade Positions")]
     [SerializeField] private GameObject rightPositionSawBlade;
     [SerializeField] private GameObject leftPositionSawBlade;
+
+    [Header("Saw Blade Settings")]
     [SerializeField] private GameObject sawBlade;
 
     enum SawBladeState

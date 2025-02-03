@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    [Header("Damage Settings")]
     [SerializeField] private float damage;
-    
+
     public int Score { get; private set; } = 0;
 
     private void OnTriggerEnter(Collider other)
