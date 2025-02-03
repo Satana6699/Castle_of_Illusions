@@ -55,6 +55,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\EnemyMovementController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
+    <Compile Include="Assets\KotelAtack.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bullet.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryWearLogic.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SpikeAtack.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\CameraShake.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\BookMovemevtController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Bomb.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\AlfaPulse.cs" />
     <Compile Include="Assets\Red Nebula Studios\RNLowPolyDungeonLite\Scenes\Demo Scripts\ActivateProp.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\BookAtackController.cs" />

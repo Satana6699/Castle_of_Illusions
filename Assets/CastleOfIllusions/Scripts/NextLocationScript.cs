@@ -42,7 +42,7 @@ public class NextLocationScript : MonoBehaviour
             Debug.LogError("Имя сцены не указано!");
         }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         _isTrigger = true;
