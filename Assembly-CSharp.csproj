@@ -45,7 +45,6 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.45f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\StartBossFight.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeTrap.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestLive.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryLogic.cs" />
@@ -57,7 +56,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronJumpAtack.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
-    <Compile Include="Assets\BombGroundBoom.cs" />
+    <Compile Include="Assets\CauldronController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bullet.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryWearLogic.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Enemyes\EnemyHealth.cs" />
@@ -66,6 +65,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\DartTrap.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\CameraShake.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bomb.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\BombGroundBoom.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\AlfaPulse.cs" />
     <Compile Include="Assets\Red Nebula Studios\RNLowPolyDungeonLite\Scenes\Demo Scripts\ActivateProp.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\Spike.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Platform.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeObject.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\StartBossFight.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerHealth.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

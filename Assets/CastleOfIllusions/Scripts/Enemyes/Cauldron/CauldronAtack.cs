@@ -12,13 +12,14 @@ public class CauldronAtack : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(SpawnBomb());
+        //StartCoroutine(SpawnBomb());
     }
     
-    private IEnumerator SpawnBomb()
+    public IEnumerator SpawnBomb()
     {
-        yield return new WaitForSeconds(bombColldown);
+        yield return null;
+        //yield return new WaitForSeconds(bombColldown);
         Instantiate(bombPrefab, transform.position, Quaternion.identity).Initialize(player.transform, height);
-        StartCoroutine(SpawnBomb());
+        //StartCoroutine(SpawnBomb());
     }
 }

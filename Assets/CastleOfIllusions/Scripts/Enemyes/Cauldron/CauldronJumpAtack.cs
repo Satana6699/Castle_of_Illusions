@@ -25,8 +25,7 @@ public class CauldronJumpAtack : MonoBehaviour
     {
         _animatorBoiler = gameObject.GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
-        
-        StartCoroutine(Jump());
+        //StartCoroutine(Jump());
     }
 
     void Update()
@@ -38,19 +37,20 @@ public class CauldronJumpAtack : MonoBehaviour
             Instantiate(boomGroundPrefab, groundCheck.position, Quaternion.identity);
         }
 
-        _animatorBoiler.SetBool("IsGrounded", _isGrounded);
+        //_animatorBoiler.SetBool("IsGrounded", _isGrounded);
         
         _wasGrounded = _isGrounded;
     }
 
-    private IEnumerator Jump()
+    public IEnumerator Jump()
     {
         Vector3 jumpVector = player.transform.position - transform.position;
         jumpVector = new Vector3(jumpVector.x, 0, 0).normalized;
         _rigidbody.AddForce((Vector3.up * jumpForceY + jumpVector * jumpForceX), ForceMode.Impulse);
-        yield return new WaitForSeconds(jumpCalldown);
         
-        StartCoroutine(Jump());
+        yield return null;
+        //yield return new WaitForSeconds(jumpCalldown);
+        //StartCoroutine(Jump());
     }
     private void CheckGround() => _isGrounded = Physics.CheckSphere(groundCheck.position, radiusGround, groundLayer);
 }

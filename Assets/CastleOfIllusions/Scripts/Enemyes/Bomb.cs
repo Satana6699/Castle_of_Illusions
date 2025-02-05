@@ -14,13 +14,24 @@ public class Bomb : MonoBehaviour
     private Transform _targetPosition;
     private float _arcHeight = 3f;
     private Vector3 _startPoint;
-    private float _timeNoBoom = 0.1f;
+    private float _timeNoBoom = 0.2f;
+    private float _timerTimeNoBoom = 0f;
     private bool _canBoom = false;
     
     public void Initialize(Transform targetPosition, float height)
     {
         _targetPosition = targetPosition;
         _arcHeight = height;
+    }
+
+    private void Update()
+    {
+        _timerTimeNoBoom += Time.deltaTime;
+
+        if (_timerTimeNoBoom >= _timeNoBoom)
+        {
+            CanBoom();
+        }
     }
     
     void Start()
@@ -30,8 +41,6 @@ public class Bomb : MonoBehaviour
         {
             StartCoroutine(MoveProjectile(_targetPosition.position));
         }
-        
-        Invoke(nameof(CanBoom), _timeNoBoom);
     }
 
     private void CanBoom()
