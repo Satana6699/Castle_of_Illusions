@@ -45,6 +45,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.45f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\StartBossFight.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeTrap.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestLive.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryLogic.cs" />

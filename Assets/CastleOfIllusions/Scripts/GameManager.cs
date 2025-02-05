@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject endGameMenu = null;
-    [SerializeField] private GameObject vinnerGameMenu = null;
     [SerializeField] private string nameFirstScene = "Forest";
     
     public void EndGame()

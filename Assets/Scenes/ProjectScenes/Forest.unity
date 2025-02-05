@@ -2225,6 +2225,11 @@ PrefabInstance:
       propertyPath: swordScore
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8671743865122513859, guid: 01b165037ad3dd64bb2ec9979e74fc7d,
+        type: 3}
+      propertyPath: timerForLoading
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9187643776496920271, guid: 01b165037ad3dd64bb2ec9979e74fc7d,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 public class SawbladeObject : MonoBehaviour
 {
     [Header("Animation Settings")]
-    [SerializeField] private float damage = 1f;
     [SerializeField] private float animationDuration = 1f;
 
     [Header("Movement Settings")]
