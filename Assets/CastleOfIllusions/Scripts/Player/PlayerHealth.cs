@@ -8,56 +8,61 @@ public class PlayerHealth : MonoBehaviour
     {
         [Header("Health Settings")]
         [SerializeField] protected float health = 100f;
-        [SerializeField] private float maxHealth;
+        private float _maxHealth;
 
         [Header("Invulnerability Settings")]
         [SerializeField] private float invulnerableDuration = 0.5f;
         [SerializeField] private float blinkSpeed = 5f;
-        [SerializeField] private bool isInvulnerable = false;
+        [SerializeField] private string playerLayer = "Player"; 
+        [SerializeField] private string enemyLayer = "Enemy"; 
         [SerializeField] private float timeInvulnerable = 0f;
+        private bool _isInvulnerable = false;
 
         [Header("UI Elements")]
         [SerializeField] protected Image healthBar;
 
         [Header("Effects")]
         [SerializeField] private Renderer render;
-        private RollingEffect _rollingEffect;
-
+        //private RollingEffect _rollingEffect;
+        
+        [Header("GameManager")]
+        [SerializeField] protected GameManager gameManager;
+        
         void Start()
         {
-            maxHealth = health;
-            _rollingEffect = GetComponent<RollingEffect>();
+            _maxHealth = health;
+            //_rollingEffect = GetComponent<RollingEffect>();
         }
 
         void Update()
         {
             InvulnerableEffect();
         
-            if (isInvulnerable)
+            if (_isInvulnerable)
             {
                 timeInvulnerable += Time.deltaTime;
             }
 
             if (timeInvulnerable >= invulnerableDuration)
             {
-                isInvulnerable = false;
+                _isInvulnerable = false;
                 timeInvulnerable = 0f;
             }
         }
         
         public void TakeDamage(float damage)
         {
-            if (isInvulnerable)
+            if (_isInvulnerable)
             {
                 return;
             }
         
-            if (_rollingEffect != null && _rollingEffect.CheckRoll())
-            {
-                return;
-            }
+            //if (_rollingEffect != null && _rollingEffect.CheckRoll())
+            //{
+            //    return;
+            //}
             
-            isInvulnerable = true;
+            _isInvulnerable = true;
             
             health -= damage;
         
@@ -72,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         
         private void UpdateHealthBar()
         {
-            healthBar.fillAmount = health / maxHealth;
+            healthBar.fillAmount = health / _maxHealth;
         }
         
         private void InvulnerableEffect()
@@ -82,11 +87,13 @@ public class PlayerHealth : MonoBehaviour
                 return;
             }
         
-            if (isInvulnerable)
+            if (_isInvulnerable)
             {
                 foreach (var material in render.materials)
                 {
                     Color color = material.color;
+                    /*Physics.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), LayerMask.NameToLayer(enemyLayer),
+                        true);*/
                     color.a = Mathf.PingPong(Time.time * blinkSpeed, 0.5f) + 0.5f;
                     material.color = color;
                 }
@@ -96,6 +103,8 @@ public class PlayerHealth : MonoBehaviour
                 foreach (var material in render.materials)
                 {
                     Color color = material.color;
+                    Physics.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), LayerMask.NameToLayer(enemyLayer),
+                        false);
                     color.a = 1f;
                     material.color = color;
                 }
@@ -104,6 +113,7 @@ public class PlayerHealth : MonoBehaviour
         
         protected virtual void Death()
         {
+            gameManager?.EndGame();
             Destroy(gameObject);
         }
     }

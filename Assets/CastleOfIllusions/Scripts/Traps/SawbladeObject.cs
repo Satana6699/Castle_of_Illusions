@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 public class SawbladeObject : MonoBehaviour
 {
     [Header("Animation Settings")]
+    [SerializeField] private float damage = 1f;
     [SerializeField] private float animationDuration = 1f;
 
     [Header("Movement Settings")]
@@ -16,7 +17,7 @@ public class SawbladeObject : MonoBehaviour
 
     private Tween _tween = null;
     private Vector3 _rotation = Vector3.zero;
-
+    
     public float MoveInput
     {
         get => _moveInput;
@@ -36,9 +37,10 @@ public class SawbladeObject : MonoBehaviour
             .SetLoops(-1, LoopType.Restart);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        transform.position += Vector3.right * _moveInput * speedMove * Time.fixedDeltaTime;
+        transform.position += Vector3.right * _moveInput * speedMove * Time.deltaTime;
+        
     }
     
     private void TurnRotate()

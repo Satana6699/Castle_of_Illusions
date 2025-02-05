@@ -9,15 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Custle.unity
+    path: Assets/Scenes/ProjectScenes/Custle.unity
     guid: e3eb8fa31422f1d48a1d785885e9654e
   - enabled: 1
-    path: Assets/Scenes/Forest.unity
+    path: Assets/Scenes/ProjectScenes/Forest.unity
     guid: 2991676e6fb59d74b86fbafe05558ee9
   - enabled: 1
-    path: Assets/Scenes/Roof.unity
+    path: Assets/Scenes/ProjectScenes/Roof.unity
     guid: 4add9dd5e1c00a344895653edf4123ea
   - enabled: 1
-    path: Assets/Scenes/Tower.unity
+    path: Assets/Scenes/ProjectScenes/Tower.unity
     guid: b6699f17fde9f9f45ac8a84d8270a0e5
   m_configObjects: {}

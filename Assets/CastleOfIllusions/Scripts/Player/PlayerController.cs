@@ -1,90 +1,91 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[RequireComponent(typeof(PlayerHealth))]
 public class PlayerController : MonoBehaviour
     {
-        [Header("Movement Settings")]
-        [SerializeField] private float moveSpeed = 10f; 
-        [SerializeField] private string playerLayer = "Player"; 
-        [SerializeField] private string enemyLayer = "Enemy"; 
-        private float _moveInput;
-        public bool FacingRight { get; private set; } = true;
-
-        [Header("Jump Settings")]
-        [SerializeField] private float jumpForce = 100f;
-        private bool _isGrounded = false;
-
-        [Header("Ground Detection")]
-        [SerializeField] private Transform groundCheck;
-        [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private float radiusGround = 0.1f;
-
-        [Header("Components")]
-        private Animator _animator;
-        private Rigidbody _rigidbody;
-        private PlayerHealth _playerHealth;
-
-    
+        [SerializeField] private float moveSpeed = 10f;
+        [SerializeField] private float jumpForce = 12f;
+        [SerializeField] private float gravityForce = -9.81f;
+        [SerializeField] private Animator animator;
+        
+        private CharacterController _controller;
+        private Vector3 _velocity;
+        private bool _isGrounded;
+        private float _moveX;
+        private bool _facingRight  = true;
+        
         private void Start()
         {
-            Physics.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), LayerMask.NameToLayer(enemyLayer),
-                true);
-            
-            _rigidbody = GetComponent<Rigidbody>();
-            _animator = GetComponent<Animator>();
-            _playerHealth = GetComponent<PlayerHealth>();
-            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            _controller = GetComponent<CharacterController>();
+            animator ??= GetComponent<Animator>();
         }
-        
+
         private void Update()
         {
-            CheckGround();
+            _isGrounded = _controller.isGrounded;
 
-            _animator.SetBool("Grounded", _isGrounded);
-        
-            float normalisedAcceleration = _moveInput;
-            _animator.SetFloat("MoveSpeed", Math.Abs(normalisedAcceleration));
-        
-            Jump();
-            Rotate();
-        }
-        
-        private void FixedUpdate()
-        {
+            if (_isGrounded && _velocity.y < 0)
+            {
+                _velocity.y = -2f;
+            }
+
+            _moveX = Input.GetAxis("Horizontal");
+            
             Move();
+            Rotate();
+            Jump();
+
+            if (_velocity.y > 0 && (_controller.collisionFlags & CollisionFlags.Above) != 0)
+            {
+                _velocity.y = 0;
+            }
+
+            Animation();
+            
+            // Use gravity
+            _velocity.y += gravityForce * Time.deltaTime;
+            
+            // freeze z
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
 
         private void Move()
         {
-            _moveInput = Input.GetAxis("Horizontal");
-            Vector3 movePosition = transform.forward * Math.Abs(_moveInput) * moveSpeed * Time.fixedDeltaTime;
-            Vector3 newPosition = transform.position + movePosition;
-            newPosition.z = 0f;
-            _rigidbody.MovePosition(newPosition);
+            Vector3 move = Vector3.right * _moveX * moveSpeed;
+
+            move.y = _velocity.y;
+
+            _controller.Move(move * Time.deltaTime);
         }
 
         private void Jump()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+            if (_isGrounded && Input.GetButtonDown("Jump"))
             {
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, _rigidbody.velocity.z);
+                _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravityForce);
             }
         }
 
         private void Rotate()
         {
-            if (_moveInput > 0 && !FacingRight)
+            if (_moveX > 0 && !_facingRight)
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
-                FacingRight = true;
+                _facingRight = true;
             }
-            else if (_moveInput < 0 && FacingRight)
+            else if (_moveX < 0 && _facingRight)
             {
                 transform.rotation = Quaternion.Euler(0, -90, 0);
-                FacingRight = false;
+                _facingRight = false;
             }
         }
-
-        private void CheckGround() => _isGrounded = Physics.CheckSphere(groundCheck.position, radiusGround, groundLayer);
+        
+        private void Animation()
+        {
+            animator.SetBool("Grounded", _isGrounded);
+        
+            float normalisedAcceleration = _moveX;
+            animator.SetFloat("MoveSpeed", Math.Abs(normalisedAcceleration));
+        }
     }

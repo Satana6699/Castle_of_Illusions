@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc71ca078736fd44aaf44658d9514ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   animationDuration: 1
   speedMove: 2.1
 --- !u!114 &3452523268767722519
@@ -135,3 +136,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  damageInterval: 0.1
