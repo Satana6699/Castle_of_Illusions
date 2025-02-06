@@ -4,15 +4,16 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 10f;
-        [SerializeField] private float jumpForce = 12f;
-        [SerializeField] private float gravityForce = -9.81f;
-        [SerializeField] private Animator animator;
+        [SerializeField] private float moveSpeed = 6f;
+        [SerializeField] private float jumpForce = 4f;
+        [SerializeField] private float airResistance = -40f;
+        [SerializeField] private float gravityForce = -40f;
+        [SerializeField] private Animator animator = null;
         
         private CharacterController _controller;
-        private Vector3 _velocity;
-        private bool _isGrounded;
-        private float _moveX;
+        private Vector3 _velocity = Vector3.zero;
+        private bool _isGrounded = false;
+        private float _moveX = 0;
         private bool _facingRight  = true;
         
         private void Start()
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
             Rotate();
             Jump();
 
+            // Check head collision
             if (_velocity.y > 0 && (_controller.collisionFlags & CollisionFlags.Above) != 0)
             {
                 _velocity.y = 0;
@@ -45,6 +47,14 @@ public class PlayerController : MonoBehaviour
             
             // Use gravity
             _velocity.y += gravityForce * Time.deltaTime;
+            
+            // Use air resistance
+            _velocity.x += airResistance * Time.deltaTime;
+
+            if (_velocity.x <= 0)
+            {
+                _velocity.x = 0;
+            }
             
             // freeze z
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -56,6 +66,11 @@ public class PlayerController : MonoBehaviour
 
             move.y = _velocity.y;
 
+            if (_velocity.x != 0)
+            {
+                move.x = _velocity.x;
+            }
+            
             _controller.Move(move * Time.deltaTime);
         }
 
@@ -67,6 +82,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        public void AddForce(Vector3 force)
+        {
+            _velocity += force;
+        }
+        
         private void Rotate()
         {
             if (_moveX > 0 && !_facingRight)

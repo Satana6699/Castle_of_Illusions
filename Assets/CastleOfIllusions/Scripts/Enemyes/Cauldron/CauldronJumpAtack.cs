@@ -3,54 +3,122 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class CauldronJumpAtack : MonoBehaviour
 {
-    [SerializeField] private float jumpForceX = 5f;
-    [SerializeField] private float jumpForceY = 5f;
-    [SerializeField] private float jumpCalldown = 5f;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float radiusGround = 0.1f;
+    [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float jumpForce = 4f;
+    [SerializeField] private float gravityForce = -40f;
+    [SerializeField] private float forcePlayer = 5f;
     [SerializeField] private GameObject player;
     
     [SerializeField] private GameObject boomGroundPrefab;
     
-    private Animator _animatorBoiler;
-    private Rigidbody _rigidbody;
+    private CharacterController _characterController;
+    private Vector3 _velocity;
+    private float _moveX;
     private bool _isGrounded = false;
     private bool _wasGrounded = false;
     
+    private int _playerLayer = 0;
+    private int _enemyLayer = 0;
+    
     void Start()
     {
-        _animatorBoiler = gameObject.GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody>();
-        //StartCoroutine(Jump());
+        _characterController = GetComponent<CharacterController>();
+        _playerLayer = LayerMask.NameToLayer("Player");
+        _enemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
     void Update()
     {
-        CheckGround();
+        _isGrounded = _characterController.isGrounded;
 
-        if (!_wasGrounded && _isGrounded)
+        if (_isGrounded && _velocity.y < 0)
         {
-            Instantiate(boomGroundPrefab, groundCheck.position, Quaternion.identity);
+            _velocity.y = -2f;
         }
-
-        //_animatorBoiler.SetBool("IsGrounded", _isGrounded);
         
+        Move();
+        
+        // Use gravity
+        _velocity.y += gravityForce * Time.deltaTime;
+            
+        // freeze z
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        
+        Приземлился();
+
         _wasGrounded = _isGrounded;
     }
 
     public IEnumerator Jump()
     {
-        Vector3 jumpVector = player.transform.position - transform.position;
-        jumpVector = new Vector3(jumpVector.x, 0, 0).normalized;
-        _rigidbody.AddForce((Vector3.up * jumpForceY + jumpVector * jumpForceX), ForceMode.Impulse);
+        yield return new WaitForSeconds(0.1f);
         
-        yield return null;
-        //yield return new WaitForSeconds(jumpCalldown);
-        //StartCoroutine(Jump());
+        //DisablePlayerBossCollision();
+        
+        if (_isGrounded)
+        {
+            Vector3 jumpVector = player.transform.position - transform.position;
+            _moveX = new Vector3(jumpVector.x, 0, 0).normalized.x;
+            _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravityForce);
+        }
     }
-    private void CheckGround() => _isGrounded = Physics.CheckSphere(groundCheck.position, radiusGround, groundLayer);
+    
+    private void Move()
+    {
+        Vector3 move = Vector3.right * _moveX * moveSpeed;
+
+        move.y = _velocity.y;
+
+        _characterController.Move(move * Time.deltaTime);
+    }
+    
+    private void Приземлился()
+    {
+        if (!_wasGrounded && _isGrounded)
+        {
+            _moveX = 0f;
+            Instantiate(boomGroundPrefab, transform.position, Quaternion.identity);
+            
+        }
+    }
+    
+    private void OnControllerColliderHit(ControllerColliderHit hit) 
+    {
+        if (hit.gameObject.CompareTag("Player"))
+        {
+            if (!_isGrounded)
+            {
+                StartCoroutine(AddForcePlayer(hit));
+            }
+        }
+    }
+
+    private IEnumerator AddForcePlayer(ControllerColliderHit hit)
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        var plaerController = hit.gameObject.GetComponent<PlayerController>();
+        var forceVector = plaerController.transform.position - transform.position;
+        forceVector = new Vector3(forceVector.x, 1, 0).normalized;
+        DisablePlayerBossCollision();
+        
+        plaerController.AddForce(forceVector * forcePlayer);
+        
+        yield return new WaitForSeconds(0.4f);
+        EnablePlayerBossCollision();
+    }
+    
+    private void DisablePlayerBossCollision() 
+    {
+        Physics.IgnoreLayerCollision(_playerLayer, _enemyLayer, true);
+    }
+
+    private void EnablePlayerBossCollision() 
+    {
+        Physics.IgnoreLayerCollision(_playerLayer, _enemyLayer, false);
+    }
+
 }

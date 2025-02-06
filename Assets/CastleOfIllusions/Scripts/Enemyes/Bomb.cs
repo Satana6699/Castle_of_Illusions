@@ -9,12 +9,12 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private ParticleSystem particleBoom;
+    [SerializeField] private float timeNoBoom = 0.2f;
     
     private float _time;
     private Transform _targetPosition;
     private float _arcHeight = 3f;
     private Vector3 _startPoint;
-    private float _timeNoBoom = 0.2f;
     private float _timerTimeNoBoom = 0f;
     private bool _canBoom = false;
     
@@ -28,7 +28,7 @@ public class Bomb : MonoBehaviour
     {
         _timerTimeNoBoom += Time.deltaTime;
 
-        if (_timerTimeNoBoom >= _timeNoBoom)
+        if (_timerTimeNoBoom >= timeNoBoom)
         {
             CanBoom();
         }
@@ -67,7 +67,6 @@ public class Bomb : MonoBehaviour
 
     void Explode()
     {
-        Debug.Log("Взрыв!");
         Instantiate(particleBoom, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

@@ -31,21 +31,28 @@ public class CauldronController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var distance = Vector3.Distance(transform.position, other.transform.position);
-            Debug.Log("distance: " + distance);
-            if (_timerAttackColldown >= attackColldown)
-            {
-                if (distance >= distanceForPiuAttack)
-                {
-                    StartCoroutine(_atack.SpawnBomb());
-                }
-                else
-                {
-                    StartCoroutine(_jumpAtack.Jump());
-                }
+            StartCoroutine(Attack(other));
+        }
+    }
 
-                _timerAttackColldown = 0;
+    private IEnumerator Attack(Collider other)
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        var distance = Vector3.Distance(transform.position, other.transform.position);
+        
+        if (_timerAttackColldown >= attackColldown)
+        {
+            if (distance >= distanceForPiuAttack)
+            {
+                StartCoroutine(_atack.SpawnBomb());
             }
+            else
+            {
+                StartCoroutine(_jumpAtack.Jump());
+            }
+
+            _timerAttackColldown = 0;
         }
     }
 }

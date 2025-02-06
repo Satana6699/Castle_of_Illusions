@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d2a84c51216f8584595ac1857e008e8d
+guid: bdb0412dd2b83434fa45aae86aa5bb2c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump
+      name: Land
       takeName: basic_rig|basic_rigAction
       internalID: 3918896466010584254
       firstFrame: 0

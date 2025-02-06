@@ -149,3 +149,4 @@ MonoBehaviour:
   speed: 10
   particleBoom: {fileID: 7977874571621633603, guid: eed6b414177b2ac4f9daae4307541f7a,
     type: 3}
+  timeNoBoom: 0.4

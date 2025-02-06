@@ -13,8 +13,6 @@ public class PlayerHealth : MonoBehaviour
         [Header("Invulnerability Settings")]
         [SerializeField] private float invulnerableDuration = 0.5f;
         [SerializeField] private float blinkSpeed = 5f;
-        [SerializeField] private string playerLayer = "Player"; 
-        [SerializeField] private string enemyLayer = "Enemy"; 
         [SerializeField] private float timeInvulnerable = 0f;
         private bool _isInvulnerable = false;
 
@@ -36,8 +34,6 @@ public class PlayerHealth : MonoBehaviour
 
         void Update()
         {
-            InvulnerableEffect();
-        
             if (_isInvulnerable)
             {
                 timeInvulnerable += Time.deltaTime;
@@ -74,41 +70,17 @@ public class PlayerHealth : MonoBehaviour
             
             UpdateHealthBar();
         }
+
+        public void Health(float addHealth)
+        {
+            var newHealth = health + addHealth;
+            health = Mathf.Clamp(newHealth, 0, _maxHealth);
+            UpdateHealthBar();
+        }
         
         private void UpdateHealthBar()
         {
             healthBar.fillAmount = health / _maxHealth;
-        }
-        
-        private void InvulnerableEffect()
-        {
-            if (render is null)
-            {
-                return;
-            }
-        
-            if (_isInvulnerable)
-            {
-                foreach (var material in render.materials)
-                {
-                    Color color = material.color;
-                    /*Physics.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), LayerMask.NameToLayer(enemyLayer),
-                        true);*/
-                    color.a = Mathf.PingPong(Time.time * blinkSpeed, 0.5f) + 0.5f;
-                    material.color = color;
-                }
-            }
-            else
-            {
-                foreach (var material in render.materials)
-                {
-                    Color color = material.color;
-                    Physics.IgnoreLayerCollision(LayerMask.NameToLayer(playerLayer), LayerMask.NameToLayer(enemyLayer),
-                        false);
-                    color.a = 1f;
-                    material.color = color;
-                }
-            }
         }
         
         protected virtual void Death()

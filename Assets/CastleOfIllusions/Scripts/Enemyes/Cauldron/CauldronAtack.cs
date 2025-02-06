@@ -1,25 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CauldronAtack : MonoBehaviour
 {
     [Header("Settings Distance Atack")]
     [SerializeField] private Bomb bombPrefab;
-    [SerializeField] private float bombColldown = 2f;
     [SerializeField] private float height = 10f;
     [SerializeField] private GameObject player;
+    [SerializeField] private Transform piuTransform;
     
-    void Start()
-    {
-        //StartCoroutine(SpawnBomb());
-    }
     
     public IEnumerator SpawnBomb()
     {
         yield return null;
-        //yield return new WaitForSeconds(bombColldown);
-        Instantiate(bombPrefab, transform.position, Quaternion.identity).Initialize(player.transform, height);
-        //StartCoroutine(SpawnBomb());
+        Instantiate(bombPrefab, piuTransform.position, Quaternion.identity).Initialize(player.transform, height);
     }
 }

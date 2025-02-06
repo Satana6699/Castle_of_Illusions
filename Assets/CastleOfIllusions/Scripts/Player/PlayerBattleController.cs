@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerBattleController : MonoBehaviour
 {
@@ -6,16 +7,16 @@ public class PlayerBattleController : MonoBehaviour
     [SerializeField] private float speedAtack = 10f;
     private float _timerAtack = 0f;
 
+    [FormerlySerializedAs("swordAnimator")]
     [Header("Sword Settings")]
-    [SerializeField] private GameObject sword;
-    [SerializeField] private Animator swordAnimator;
+    [SerializeField] private Animator animator;
 
 
     void Start()
     {
-        if (swordAnimator == null)
+        if (animator == null)
         {
-            swordAnimator = sword.GetComponent<Animator>();
+            animator = GetComponent<Animator>();
         }
 
         _timerAtack = speedAtack;
@@ -34,6 +35,6 @@ public class PlayerBattleController : MonoBehaviour
 
     private void Atack()
     {
-        swordAnimator.SetTrigger("Atack");
+        animator.SetTrigger("Attack");
     }
 }
