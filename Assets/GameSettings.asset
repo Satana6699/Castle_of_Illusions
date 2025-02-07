@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6e78996ae9e4349953c1cffbef6d48, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  playerHealth: 500
+  playerDamage: 20
+  playerSpeedAttck: 1
+  playerSpeed: 5
+  playerGravityForce: -35
+  playerJumpForce: 2
+  chairHealth: 50
+  chairDamage: 20
+  chairSpeed: 2
+  chairGravityForce: -30
+  bookHealth: 0
+  bossHealth: 50
+  bossDamage: 10
+  bossJumpForce: 3
+  bossGravityForce: -30
+  distanceForDistanceAttack: 5
+  bossAttackCooldown: 3
+  trapDamage: 1

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Serialization;
 
 public class NextLocationScript : MonoBehaviour
 {
@@ -12,11 +13,11 @@ public class NextLocationScript : MonoBehaviour
     [SerializeField] private float timerForLoading;
 
     [Header("Settings UI")]
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private Canvas interactiveCanvas;
 
     private void Start()
     {
-        canvas.enabled = false;
+        interactiveCanvas.enabled = false;
     }
     
     private void LoadScene()
@@ -33,7 +34,7 @@ public class NextLocationScript : MonoBehaviour
     
     private void OnTriggerStay(Collider other)
     {
-        canvas.enabled = true;
+        interactiveCanvas.enabled = true;
         if (Input.GetKey(KeyCode.E))
         {
             Invoke(nameof(LoadScene), timerForLoading);
@@ -42,6 +43,6 @@ public class NextLocationScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        canvas.enabled = false;
+        interactiveCanvas.enabled = false;
     }
 }

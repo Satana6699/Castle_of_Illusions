@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombGrundBoom : MonoBehaviour
+public class BossJumpShockwave : MonoBehaviour
 {
-    [SerializeField] private float damage = 5f;
+    [SerializeField] private GameSettings gameSettings;
+    
+    private float _damage = 5f;
     [SerializeField] private ParticleSystem boomParticles;
 
     private void Start()
     {
+        if (gameSettings is not null)
+        {
+            _damage = gameSettings.bossDamage;
+        }
+        
         if (boomParticles is not null)
         {
             Instantiate(boomParticles, transform.position, Quaternion.identity);
@@ -25,7 +32,7 @@ public class BombGrundBoom : MonoBehaviour
             
             if (playerHealth is not null)
             {
-                playerHealth.TakeDamage(damage);
+                playerHealth.TakeDamage(_damage);
             }
         }
     }

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health Stats")]
-    [SerializeField] protected float health = 100f;
+    protected float health = 100f;
     [SerializeField] protected ParticleSystem damageParticles;
     [SerializeField] protected Image healthBar;
 
     private float _maxHealth;
 
-    private void Start()
+    protected virtual void Start()
     {
         _maxHealth = health;
         UpdateHealthBar();

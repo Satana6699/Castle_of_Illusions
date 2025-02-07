@@ -2,7 +2,9 @@ using UnityEngine;
     
 public class ChairBattleController : MonoBehaviour
 {
-    [SerializeField] private float damage = 10f;
+    [SerializeField] private GameSettings gameSettings;
+    
+    private float _damage = 10f;
     [SerializeField] private Animator animator;
 
     private ChairController _movementController;
@@ -10,6 +12,11 @@ public class ChairBattleController : MonoBehaviour
     
     private void Start()
     {
+        if (gameSettings is not null)
+        {
+            _damage = gameSettings.chairDamage;
+        }
+        
         _movementController = GetComponent<ChairController>();
         
         if (animator is null)
@@ -37,6 +44,6 @@ public class ChairBattleController : MonoBehaviour
     public void DamagePlayer()
     {
         Debug.Log("Player damaged");
-        _playerHealth?.TakeDamage(damage);
+        _playerHealth?.TakeDamage(_damage);
     }
 }

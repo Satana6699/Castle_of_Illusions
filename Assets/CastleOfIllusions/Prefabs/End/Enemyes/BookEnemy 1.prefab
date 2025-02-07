@@ -613,10 +613,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00ca380ebbdfc4f468d9c1ba46da2ba5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6928517801993725439}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00ca380ebbdfc4f468d9c1ba46da2ba5,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8079584874227293192}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00ca380ebbdfc4f468d9c1ba46da2ba5,
         type: 3}
@@ -630,6 +626,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7007338787858691542}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00ca380ebbdfc4f468d9c1ba46da2ba5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5277241069276386987}
   m_SourcePrefab: {fileID: 100100000, guid: 00ca380ebbdfc4f468d9c1ba46da2ba5, type: 3}
 --- !u!1 &4744854682475787042 stripped
 GameObject:
@@ -658,22 +658,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6928517801993725439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4744854682475787042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d444f577cbc149f4ea07c70734ea871d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  damageParticles: {fileID: 8771787893425353135, guid: 6f5d49717f9e6c348b2a6936ab8fb8a5,
-    type: 3}
-  healthBar: {fileID: 5741234355081460617}
 --- !u!114 &8079584874227293192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,9 +737,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4334e9f90b4bcf4697a297b3848666c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chanceDrop: 50
   healthGameObject: {fileID: 82369488288212139, guid: 8aef3c0454b227e4bbf6a1f5b0efc97f,
     type: 3}
-  chanceDrop: 50
+--- !u!114 &-5277241069276386987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744854682475787042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741b42d2ac0e4e20a34530b36c6d5e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageParticles: {fileID: 8771787893425353135, guid: 6f5d49717f9e6c348b2a6936ab8fb8a5,
+    type: 3}
+  healthBar: {fileID: 5741234355081460617}
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
 --- !u!4 &5373582281587894680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 00ca380ebbdfc4f468d9c1ba46da2ba5,

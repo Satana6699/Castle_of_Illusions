@@ -6,8 +6,9 @@ using Random = UnityEngine.Random;
 
 public class ChanceDropHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject healthGameObject;
     [SerializeField] private float chanceDrop = 50;
+    
+    [SerializeField] private GameObject healthGameObject;
     
     bool Chance(float percent) {
         return Random.value <= percent / 100f;

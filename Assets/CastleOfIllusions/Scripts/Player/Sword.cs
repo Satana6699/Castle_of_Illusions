@@ -7,8 +7,17 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     [Header("Damage Settings")]
-    [SerializeField] private float damage;
+    [SerializeField] private GameSettings gameSettings;
+    private float _damage = 10f;
 
+    private void Start()
+    {
+        if (gameSettings is not null)
+        {
+            _damage = gameSettings.playerDamage;
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -17,7 +26,7 @@ public class Sword : MonoBehaviour
             
             if (enemy is not null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(_damage);
             }
         }
     }

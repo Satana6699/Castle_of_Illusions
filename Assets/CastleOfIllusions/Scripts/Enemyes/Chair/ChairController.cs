@@ -5,10 +5,13 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(CharacterController))]
 public class ChairController : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 10f;
+        [SerializeField] private GameSettings gameSettings;
+        
+        private float _moveSpeed = 10f;
+        private float _gravityForce = -9.81f;
+        
         [SerializeField] private GameObject leftLimitPosition;
         [SerializeField] private GameObject rightLimitPosition;
-        [SerializeField] private float gravityForce = -9.81f;
         [SerializeField] private bool isMoving = true;
         [SerializeField] private Animator animator;
         
@@ -19,6 +22,12 @@ public class ChairController : MonoBehaviour
         private Vector3 _leftLimitPosition, _rightLimitPosition;
         private void Start()
         {
+            if (gameSettings is not null)
+            {
+                _moveSpeed = gameSettings.chairSpeed;
+                _gravityForce = gameSettings.chairGravityForce;
+            }
+            
             animator = GetComponent<Animator>();
         
             if (animator is not null)
@@ -47,7 +56,7 @@ public class ChairController : MonoBehaviour
             }
             
             // Horizontal move
-            Vector3 move = Vector3.right * _moveX * moveSpeed;
+            Vector3 move = Vector3.right * _moveX * _moveSpeed;
 
             // Vertical move
             move.y = _velocity.y;
@@ -60,7 +69,7 @@ public class ChairController : MonoBehaviour
             }
             
             // Gravity
-            _velocity.y += gravityForce * Time.deltaTime;
+            _velocity.y += _gravityForce * Time.deltaTime;
         }
 
         public void StopMoving()

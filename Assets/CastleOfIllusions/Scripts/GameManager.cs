@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject endGameMenu = null;
+    [SerializeField] private GameObject gameOverMenu = null;
     [SerializeField] private string nameFirstScene = "Forest";
     
     public void EndGame()
     {
-        endGameMenu.SetActive(true);
+        gameOverMenu.SetActive(true);
     }
-
+    
     public void RestartGame()
     {
         if (!string.IsNullOrEmpty(nameFirstScene))

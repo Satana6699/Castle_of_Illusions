@@ -105,8 +105,6 @@ public class CauldronJumpAtack : MonoBehaviour
         forceVector = new Vector3(forceVector.x, 1, 0).normalized;
         DisablePlayerBossCollision();
         
-        plaerController.AddForce(forceVector * forcePlayer);
-        
         yield return new WaitForSeconds(0.4f);
         EnablePlayerBossCollision();
     }

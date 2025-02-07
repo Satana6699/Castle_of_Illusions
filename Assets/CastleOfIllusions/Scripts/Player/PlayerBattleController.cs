@@ -3,37 +3,40 @@ using UnityEngine.Serialization;
 
 public class PlayerBattleController : MonoBehaviour
 {
+    [SerializeField] private GameSettings gameSettings;
+    
     [Header("Attack Settings")]
-    [SerializeField] private float speedAtack = 10f;
-    private float _timerAtack = 0f;
+    private float _speedAttack = 1f;
+    private float _timerAttack = 0f;
 
-    [FormerlySerializedAs("swordAnimator")]
     [Header("Sword Settings")]
     [SerializeField] private Animator animator;
 
 
     void Start()
     {
-        if (animator == null)
+        if (gameSettings is not null)
         {
-            animator = GetComponent<Animator>();
+            _speedAttack = gameSettings.playerSpeedAttck;
         }
+        
+        animator ??= GetComponent<Animator>();
 
-        _timerAtack = speedAtack;
+        _timerAttack = _speedAttack;
     }
     
     void Update()
     {
-        _timerAtack += Time.deltaTime;
+        _timerAttack += Time.deltaTime;
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _timerAtack >= speedAtack)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _timerAttack >= _speedAttack)
         {
-            Atack();
-            _timerAtack = 0f;
+            Attack();
+            _timerAttack = 0f;
         }
     }
 
-    private void Atack()
+    private void Attack()
     {
         animator.SetTrigger("Attack");
     }

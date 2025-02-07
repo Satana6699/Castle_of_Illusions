@@ -4,10 +4,12 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 6f;
-        [SerializeField] private float jumpForce = 4f;
-        [SerializeField] private float airResistance = -40f;
-        [SerializeField] private float gravityForce = -40f;
+        [SerializeField] private GameSettings gameSettings;
+        
+        [Header("Player settings")]
+        private float _moveSpeed = 6f;
+        private float _jumpForce = 4f;
+        private float _gravityForce = -40f;
         [SerializeField] private Animator animator = null;
         
         private CharacterController _controller;
@@ -18,6 +20,13 @@ public class PlayerController : MonoBehaviour
         
         private void Start()
         {
+            if (gameSettings is not null)
+            {
+                _moveSpeed = gameSettings.playerSpeed;
+                _jumpForce = gameSettings.playerJumpForce;
+                _gravityForce = gameSettings.playerGravityForce;
+            }
+            
             _controller = GetComponent<CharacterController>();
             animator ??= GetComponent<Animator>();
         }
@@ -46,10 +55,7 @@ public class PlayerController : MonoBehaviour
             Animation();
             
             // Use gravity
-            _velocity.y += gravityForce * Time.deltaTime;
-            
-            // Use air resistance
-            _velocity.x += airResistance * Time.deltaTime;
+            _velocity.y += _gravityForce * Time.deltaTime;
 
             if (_velocity.x <= 0)
             {
@@ -62,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
         private void Move()
         {
-            Vector3 move = Vector3.right * _moveX * moveSpeed;
+            Vector3 move = Vector3.right * _moveX * _moveSpeed;
 
             move.y = _velocity.y;
 
@@ -78,13 +84,8 @@ public class PlayerController : MonoBehaviour
         {
             if (_isGrounded && Input.GetButtonDown("Jump"))
             {
-                _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravityForce);
+                _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravityForce);
             }
-        }
-
-        public void AddForce(Vector3 force)
-        {
-            _velocity += force;
         }
         
         private void Rotate()

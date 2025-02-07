@@ -6,21 +6,15 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
     {
+        [SerializeField] private GameSettings gameSettings;
+        
         [Header("Health Settings")]
-        [SerializeField] protected float health = 100f;
+        private float _health = 100f;
         private float _maxHealth;
-
-        [Header("Invulnerability Settings")]
-        [SerializeField] private float invulnerableDuration = 0.5f;
-        [SerializeField] private float blinkSpeed = 5f;
-        [SerializeField] private float timeInvulnerable = 0f;
-        private bool _isInvulnerable = false;
 
         [Header("UI Elements")]
         [SerializeField] protected Image healthBar;
 
-        [Header("Effects")]
-        [SerializeField] private Renderer render;
         //private RollingEffect _rollingEffect;
         
         [Header("GameManager")]
@@ -28,59 +22,44 @@ public class PlayerHealth : MonoBehaviour
         
         void Start()
         {
-            _maxHealth = health;
+            if (gameSettings is not null)
+            {
+                _health = gameSettings.playerHealth;
+            }
+            
+            _maxHealth = _health;
             //_rollingEffect = GetComponent<RollingEffect>();
         }
 
-        void Update()
-        {
-            if (_isInvulnerable)
-            {
-                timeInvulnerable += Time.deltaTime;
-            }
-
-            if (timeInvulnerable >= invulnerableDuration)
-            {
-                _isInvulnerable = false;
-                timeInvulnerable = 0f;
-            }
-        }
         
         public void TakeDamage(float damage)
         {
-            if (_isInvulnerable)
-            {
-                return;
-            }
-        
             //if (_rollingEffect != null && _rollingEffect.CheckRoll())
             //{
             //    return;
             //}
             
-            _isInvulnerable = true;
-            
-            health -= damage;
+            _health -= damage;
         
-            if (health <= 0)
+            if (_health <= 0)
             {
-                health = 0;
+                _health = 0;
                 Death();
             }
             
             UpdateHealthBar();
         }
 
-        public void Health(float addHealth)
+        public void Heal(float addHealth)
         {
-            var newHealth = health + addHealth;
-            health = Mathf.Clamp(newHealth, 0, _maxHealth);
+            var newHealth = _health + addHealth;
+            _health = Mathf.Clamp(newHealth, 0, _maxHealth);
             UpdateHealthBar();
         }
         
         private void UpdateHealthBar()
         {
-            healthBar.fillAmount = health / _maxHealth;
+            healthBar.fillAmount = _health / _maxHealth;
         }
         
         protected virtual void Death()

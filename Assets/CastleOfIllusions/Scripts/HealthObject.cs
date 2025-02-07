@@ -8,25 +8,22 @@ public class HealthObject : MonoBehaviour
     [SerializeField] private float addHealth = 10f;
     [SerializeField] private float durationAnimation = 1f;
 
+    private Sequence _sequence;
     private Tween _tween;
     
     private void Start()
     {
-        // Создаем последовательность анимаций
-        var sequence = DOTween.Sequence();
+        _sequence = DOTween.Sequence();
 
-        // Вращение объекта
-        sequence.Append(transform.DORotate(new Vector3(0f, 360f, 0f), durationAnimation, RotateMode.LocalAxisAdd)
+        _sequence.Append(transform.DORotate(new Vector3(0f, 360f, 0f), durationAnimation, RotateMode.LocalAxisAdd)
             .SetEase(Ease.Linear)
-            .SetLoops(-1, LoopType.Restart)); // Бесконечное вращение (вне Sequence)
+            .SetLoops(-1, LoopType.Restart));
 
-        // Подпрыгивание объекта
-        transform.DOLocalMoveY(transform.position.y + 0.5f, 0.5f) // Подпрыгивание вверх на 0.5 единиц
-            .SetLoops(-1, LoopType.Yoyo) // Периодичность — вверх-вниз
-            .SetEase(Ease.InOutSine); // Плавный эффект
+        _sequence.Append(transform.DOLocalMoveY(transform.position.y + 0.5f, 0.5f) // Подпрыгивание
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine));
 
-        // Запуск последовательности
-        sequence.Play();
+        _sequence.Play();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +31,7 @@ public class HealthObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             var playerHealth = other.GetComponent<PlayerHealth>();
-            playerHealth.Health(addHealth);
+            playerHealth.Heal(addHealth);
             Destroy(gameObject);
         }
     }
@@ -42,5 +39,6 @@ public class HealthObject : MonoBehaviour
     private void OnDestroy()
     {
         _tween.Kill();
+        _sequence.Kill();
     }
 }
