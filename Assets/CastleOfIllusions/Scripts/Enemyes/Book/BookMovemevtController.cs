@@ -46,6 +46,11 @@ public class BockMovemevtController : MonoBehaviour
         NewTween();
     }
 
+    void Update()
+    {
+        AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.flyingBookAttackSound);
+    }
+    
     private void NewRandomValue()
     {
         _newPos = new Vector3(Random.Range(_startPosX, _endPosX), Random.Range(_startPosY, _endPosY), 0f);

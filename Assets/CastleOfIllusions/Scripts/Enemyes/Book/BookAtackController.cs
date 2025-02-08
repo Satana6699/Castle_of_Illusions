@@ -68,12 +68,13 @@ public class BookAtackController : MonoBehaviour
             {
                 player = GameObject.FindGameObjectWithTag("Player");
             }
-            
+
             if (player)
             {
                 Vector3 direction = player.transform.position + _offsetVector - gameObject.transform.position;
                 Quaternion bulletRotation = Quaternion.LookRotation(direction);
                 Instantiate(bulletPrefab, transform.position, bulletRotation);
+                AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.attackBookSound);
             }
             
             yield return new WaitForSeconds(_timeBetweenShots);

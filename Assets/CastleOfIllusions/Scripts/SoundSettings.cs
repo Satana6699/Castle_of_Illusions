@@ -7,36 +7,36 @@ public class SoundSettings : ScriptableObject
     public AudioClip backgroundMusic;
     
     [Header("Player Sounds")]
-    // Звук передвижения игрока и противников
-    public AudioClip playerMovementSound;
+    // Звук передвижения игрока
+    public AudioClip playerMovementSound; //
 
     // Звук прыжка игрока
-    public AudioClip playerJumpSound;
+    public AudioClip playerJumpSound; //
 
     // Звук атаки мечом
-    public AudioClip swordAttackSound;
+    public AudioClip swordAttackSound; //
 
     // Звук попадания мечом
-    public AudioClip swordHitSound;
+    public AudioClip swordHitSound; //
 
     // Звук получения урона игровым персонажем
-    public AudioClip playerDamageSound;
+    public AudioClip playerDamageSound; //
 
     // Звук смерти игрового персонажа
-    public AudioClip playerDeathSound;
+    public AudioClip playerDeathSound; //
 
-    // Звук подбора хилки и лечения
-    public AudioClip healthPickupSound;
+    // Звук лечения
+    public AudioClip healthPickupSound; //
 
     // Звук кувырка игрового персонажа
-    public AudioClip playerRollSound;
+    public AudioClip playerRollSound; //
     
     [Header("Book Sounds")]
     // Звук атаки летающей книги
-    public AudioClip flyingBookAttackSound;
+    public AudioClip flyingBookAttackSound; //
 
-    // Звук парения книги
-    public AudioClip floatingBookSound;
+    // Звук атаки книги
+    public AudioClip attackBookSound; //
     
     [Header("Chest Sounds")]
     // Звук укуса мимика
@@ -44,7 +44,7 @@ public class SoundSettings : ScriptableObject
 
     [Header("Chair Sounds")]
     // Звук атаки табуретки
-    public AudioClip stoolAttackSound;
+    public AudioClip chairAttackSound; //
 
     [Header("UI Sounds")]
     // Звук взаимодействия с UI
@@ -74,7 +74,7 @@ public class SoundSettings : ScriptableObject
     
     [Header("trap Sounds")]
     // Звук пилы
-    public AudioClip sawSound;
+    public AudioClip sawSound; 
 
     // Звук шипов
     public AudioClip spikesSound;

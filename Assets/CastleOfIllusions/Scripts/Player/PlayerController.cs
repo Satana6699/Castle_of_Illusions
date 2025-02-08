@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
 
             _moveX = Input.GetAxis("Horizontal");
             
+            if (_moveX != 0)
+            {
+                AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.playerMovementSound);
+            }
+            
             Move();
             Rotate();
             Jump();
@@ -56,11 +61,6 @@ public class PlayerController : MonoBehaviour
             
             // Use gravity
             _velocity.y += _gravityForce * Time.deltaTime;
-
-            if (_velocity.x <= 0)
-            {
-                _velocity.x = 0;
-            }
             
             // freeze z
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -71,11 +71,6 @@ public class PlayerController : MonoBehaviour
             Vector3 move = Vector3.right * _moveX * _moveSpeed;
 
             move.y = _velocity.y;
-
-            if (_velocity.x != 0)
-            {
-                move.x = _velocity.x;
-            }
             
             _controller.Move(move * Time.deltaTime);
         }
@@ -85,6 +80,7 @@ public class PlayerController : MonoBehaviour
             if (_isGrounded && Input.GetButtonDown("Jump"))
             {
                 _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravityForce);
+                AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.playerJumpSound);
             }
         }
         

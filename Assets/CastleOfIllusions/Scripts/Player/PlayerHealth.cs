@@ -40,7 +40,9 @@ public class PlayerHealth : MonoBehaviour
             }
             
             _health -= damage;
-        
+            
+            AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.playerDamageSound);
+
             if (_health <= 0)
             {
                 _health = 0;
@@ -52,6 +54,8 @@ public class PlayerHealth : MonoBehaviour
 
         public void Heal(float addHealth)
         {
+            AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.healthPickupSound);
+            
             var newHealth = _health + addHealth;
             _health = Mathf.Clamp(newHealth, 0, _maxHealth);
             UpdateHealthBar();
@@ -64,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
         
         protected virtual void Death()
         {
+            AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.playerDeathSound);
+
             gameManager?.EndGame();
             Destroy(gameObject);
         }
