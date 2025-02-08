@@ -3,7 +3,8 @@ using UnityEngine;
 public class BossHealth : EnemyHealth
 {
     [SerializeField] private GameSettings gameSettings;
-
+    [SerializeField] private DoorOpen doorOpen;
+    
     protected override void Start()
     {
         if (gameSettings)
@@ -12,5 +13,12 @@ public class BossHealth : EnemyHealth
         }
             
         base.Start();
+    }
+
+    protected override void Death()
+    {
+        doorOpen.OpenDoor();
+        
+        base.Death();
     }
 }

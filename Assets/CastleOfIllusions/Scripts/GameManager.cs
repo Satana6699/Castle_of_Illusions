@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -5,11 +6,17 @@ using UnityEngine.Serialization;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverMenu = null;
+    [SerializeField] private GameObject vinnerMenu = null;
     [SerializeField] private GameObject mainMenu = null;
     [SerializeField] private GameObject pauseMenuUI = null;
     [SerializeField] private string nameFirstScene = "Forest";
     
     private bool _isPaused = false;
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
 
     private void Update()
     {
@@ -69,5 +76,11 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Vinner()
+    {
+        Time.timeScale = 0f;
+        vinnerMenu.SetActive(true);
     }
 }

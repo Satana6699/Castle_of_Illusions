@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
         UpdateHealthBar();
     }
     
-    private void Death()
+    protected virtual void Death()
     {
         _chanceDropHealth?.SpawnHealInChance();
         Destroy(gameObject);

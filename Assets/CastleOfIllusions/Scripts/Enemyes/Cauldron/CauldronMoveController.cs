@@ -24,8 +24,6 @@ public class CauldronMoveController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("на земле " + _characterController.isGrounded);
-        
         Move();
     }
 

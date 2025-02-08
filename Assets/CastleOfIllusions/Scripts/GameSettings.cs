@@ -67,6 +67,7 @@ public class GameSettings : ScriptableObject
     public float bossHeightDistanceAttack = 8f;
     public float speedDistanceBossAttack = 8f;
     public float bossMinDistanceToPlayer = 1.2f;
+    public float bossExplosionRadius = 2f;
     
     [Space(50)]
     [Header("Traps Stats")]

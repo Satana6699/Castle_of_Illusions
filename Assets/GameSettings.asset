@@ -34,9 +34,9 @@ MonoBehaviour:
   speedPercentRandom: 5
   waitTime: 0.6
   bossHealth: 100
-  bossDamage: 10
+  bossDamage: 20
   distanceForDistanceAttack: 8
-  bossAttackCooldown: 3
+  bossAttackCooldown: 1.5
   bossMoveSpeed: 0.3
   bossJumpForce: 3
   bossGravityForce: -30
@@ -44,6 +44,7 @@ MonoBehaviour:
   bossHeightDistanceAttack: 8
   speedDistanceBossAttack: 8
   bossMinDistanceToPlayer: 2
+  bossExplosionRadius: 2
   damageSawblade: 2
   speedMoveSawblade: 5
   animationDurationSawbladeRotation: 1
