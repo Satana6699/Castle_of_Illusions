@@ -40,7 +40,8 @@ public class CauldronController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(Attack(other));
+            if (other)
+                StartCoroutine(Attack(other));
         }
     }
 

@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422f004e357dfa2479b916adab212034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  particleBoom: {fileID: 7977874571621633603, guid: eed6b414177b2ac4f9daae4307541f7a,
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
+  particleBoom: {fileID: 1065726155443429625, guid: f4c4468a94ba5f644ab1220dfecde106,
     type: 3}
   timeNoBoom: 0.4

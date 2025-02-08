@@ -23,4 +23,19 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Имя сцены не указано!");
         }
     }
+
+    public void MuteAllSounds()
+    {
+        AudioManager.Instance.MuteAllSounds();
+    }
+
+    public void UnmuteAllSounds()
+    {
+        AudioManager.Instance.UnmuteAllSounds();
+    }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

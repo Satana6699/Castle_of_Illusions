@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74979b7b12346c198e579a8dffeddcb, type: 3}
   m_Name: SoundSettings
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 0}
-  playerMovementSound: {fileID: 0}
-  playerJumpSound: {fileID: 0}
-  swordAttackSound: {fileID: 0}
-  swordHitSound: {fileID: 0}
-  playerDamageSound: {fileID: 0}
-  playerDeathSound: {fileID: 0}
-  healthPickupSound: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 6577ddf2689d054459d96e91e0a9df26, type: 3}
+  playerMovementSound: {fileID: 8300000, guid: 8de739a56da7f18409b7e8b34a905bde, type: 3}
+  playerJumpSound: {fileID: 8300000, guid: a367b837dc5545542aeaf2b44c4828ea, type: 3}
+  swordAttackSound: {fileID: 8300000, guid: a9b33cbee41dce24785d8cc67b3f4c75, type: 3}
+  swordHitSound: {fileID: 8300000, guid: c96dd9d4767da99428de72056eaab1cb, type: 3}
+  playerDamageSound: {fileID: 8300000, guid: 78dce662cd9ef274b9471faa042a7202, type: 3}
+  playerDeathSound: {fileID: 8300000, guid: 0b80af2f2e5c69f46b4b7b7850cbd952, type: 3}
+  healthPickupSound: {fileID: 8300000, guid: eb19b64d7a9303d45836745989d48b22, type: 3}
   playerRollSound: {fileID: 0}
   flyingBookAttackSound: {fileID: 0}
-  floatingBookSound: {fileID: 0}
+  attackBookSound: {fileID: 0}
   mimicBiteSound: {fileID: 0}
-  stoolAttackSound: {fileID: 0}
+  chairAttackSound: {fileID: 0}
   uiInteractionSound: {fileID: 0}
   winSound: {fileID: 0}
   deactivateSpikesTrapSound: {fileID: 0}

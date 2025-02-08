@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
             
             if (_moveX != 0)
             {
-                AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.playerMovementSound);
+                AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerMovementSound);
             }
             
             Move();
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             if (_isGrounded && Input.GetButtonDown("Jump"))
             {
                 _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravityForce);
-                AudioManager.Instance.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.playerJumpSound);
+                AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerJumpSound);
             }
         }
         

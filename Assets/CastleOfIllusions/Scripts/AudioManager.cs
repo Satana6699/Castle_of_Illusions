@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-
+    
     [SerializeField] public SoundSettings soundSettings;
 
     private AudioSource _musicSource;
@@ -17,6 +18,7 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(Instance);
         }
         else
         {
@@ -26,6 +28,11 @@ public class AudioManager : MonoBehaviour
 
         _musicSource = gameObject.AddComponent<AudioSource>();
         _musicSource.loop = true;
+    }
+
+    private void Start()
+    {
+        PlayMusic(Instance.soundSettings.backgroundMusic);
     }
 
     public void PlayMusic(AudioClip music)
@@ -100,4 +107,23 @@ public class AudioManager : MonoBehaviour
         _sfxSources.Add(newSource);
         return newSource;
     }
+    
+    public void MuteAllSounds()
+    {
+        _musicSource.mute = true;
+        foreach (var source in _sfxSources)
+        {
+            source.mute = true;
+        }
+    }
+
+    public void UnmuteAllSounds()
+    {
+        _musicSource.mute = false;
+        foreach (var source in _sfxSources)
+        {
+            source.mute = false;
+        }
+    }
+
 }

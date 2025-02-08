@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6e78996ae9e4349953c1cffbef6d48, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  playerHealth: 120
+  playerHealth: 200
   playerDamage: 15
   playerSpeedAttack: 1
   playerSpeed: 5
