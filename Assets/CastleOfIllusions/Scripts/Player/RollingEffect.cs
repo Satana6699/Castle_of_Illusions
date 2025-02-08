@@ -49,6 +49,9 @@ public class RollingEffect : MonoBehaviour
                 Vector3 rollPosition = transform.forward.normalized * rollSpeed * Time.deltaTime;
                 _characterController.Move(rollPosition);
             }
+            
+            // freeze z
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
     
         private IEnumerator Roll()
