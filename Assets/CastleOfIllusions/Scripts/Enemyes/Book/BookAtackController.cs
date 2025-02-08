@@ -5,20 +5,32 @@ using UnityEngine;
 
 public class BookAtackController : MonoBehaviour
 {
+    [SerializeField] private GameSettings gameSettings;
+    
     [SerializeField] private GameObject bulletPrefab = null;
     [SerializeField] private GameObject player = null;
-    [SerializeField] private Vector3 offsetVector = new Vector3(0,0,0);
+    private Vector3 _offsetVector = new Vector3(0,0,0);
     
-    [SerializeField] private float timeBetweenShots = 0.2f;
-    [SerializeField] private float timeBetweenQueue = 2f;
-    [SerializeField] private int countBullet = 3;
+    private float _timeBetweenShots = 0.2f;
+    private float _timeBetweenQueue = 2f;
+    private int _countBullet = 3;
     
     private float _timerQueue = 0f;
     private bool _canAttack = true;
     
     void Start()
     {
-        timeBetweenQueue += timeBetweenShots;
+        if (gameSettings is not null)
+        {
+            _timeBetweenShots = gameSettings.bookTimeBetweenShots;
+            _timeBetweenQueue = gameSettings.bookTimeBetweenQueue;
+            _countBullet = gameSettings.countBullet;
+            _offsetVector = gameSettings.bookOffsetVectorForTarget;
+        }
+
+        player ??= GameObject.FindGameObjectWithTag("Player");
+        
+        _timeBetweenQueue += _timeBetweenShots;
     }
 
     void Update()
@@ -28,7 +40,7 @@ public class BookAtackController : MonoBehaviour
             _timerQueue += Time.deltaTime;
         }
 
-        if (_timerQueue >= timeBetweenQueue)
+        if (_timerQueue >= _timeBetweenQueue)
         {
             _canAttack = true;
             _timerQueue = 0f;
@@ -50,21 +62,21 @@ public class BookAtackController : MonoBehaviour
     {
         _canAttack = false;
 
-        for (int i = 0; i < countBullet; i++)
+        for (int i = 0; i < _countBullet; i++)
         {
-            if (player is null)
+            if (!player)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
             }
             
-            if (player is not null)
+            if (player)
             {
-                Vector3 direction = player.transform.position + offsetVector - gameObject.transform.position;
+                Vector3 direction = player.transform.position + _offsetVector - gameObject.transform.position;
                 Quaternion bulletRotation = Quaternion.LookRotation(direction);
                 Instantiate(bulletPrefab, transform.position, bulletRotation);
             }
             
-            yield return new WaitForSeconds(timeBetweenShots);
+            yield return new WaitForSeconds(_timeBetweenShots);
         }
         
         _canAttack = false;

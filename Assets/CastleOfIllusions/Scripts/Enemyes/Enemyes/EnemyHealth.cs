@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health Stats")]
-    protected float health = 100f;
+    protected float Health = 100f;
     [SerializeField] protected ParticleSystem damageParticles;
     [SerializeField] protected Image healthBar;
 
     private float _maxHealth;
-
+    private ChanceDropHealth _chanceDropHealth;
     protected virtual void Start()
     {
-        _maxHealth = health;
+        _maxHealth = Health;
+        _chanceDropHealth = GetComponent<ChanceDropHealth>();
         UpdateHealthBar();
     }
 
@@ -32,32 +33,33 @@ public class EnemyHealth : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        Health -= damage;
         
-        if (damageParticles is not null)
+        if (damageParticles)
         {
             Instantiate(damageParticles, transform.position, Quaternion.identity);
         }
             
-        if (health <= 0)
+        if (Health <= 0)
         {
-            health = 0;
+            Health = 0;
             Death();
         }
 
         UpdateHealthBar();
     }
-
+    
     private void Death()
     {
+        _chanceDropHealth?.SpawnHealInChance();
         Destroy(gameObject);
     }
 
     private void UpdateHealthBar()
     {
-        if (healthBar is not null)
+        if (healthBar)
         {
-            healthBar.fillAmount = health / _maxHealth;
+            healthBar.fillAmount = Health / _maxHealth;
         }
     }
 }

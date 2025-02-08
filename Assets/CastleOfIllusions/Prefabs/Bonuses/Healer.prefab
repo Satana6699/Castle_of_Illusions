@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341d953dc6aca0148b26b569d98e1b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addHealth: 10
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   durationAnimation: 1
 --- !u!1 &1520447825165894523
 GameObject:

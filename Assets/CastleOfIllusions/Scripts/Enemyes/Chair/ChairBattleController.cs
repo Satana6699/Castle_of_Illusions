@@ -12,7 +12,7 @@ public class ChairBattleController : MonoBehaviour
     
     private void Start()
     {
-        if (gameSettings is not null)
+        if (gameSettings)
         {
             _damage = gameSettings.chairDamage;
         }
@@ -43,7 +43,6 @@ public class ChairBattleController : MonoBehaviour
 
     public void DamagePlayer()
     {
-        Debug.Log("Player damaged");
         _playerHealth?.TakeDamage(_damage);
     }
 }

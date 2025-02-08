@@ -119,9 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1641fc754212d24eaa5488b196d5a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
-  speed: 10
-  timeLive: 2
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   particleSystem: {fileID: 1065726155443429625, guid: 7fd9dc28bba4e9a4bb18b9c5e05689a9,
     type: 3}
 --- !u!54 &4179674508496905261

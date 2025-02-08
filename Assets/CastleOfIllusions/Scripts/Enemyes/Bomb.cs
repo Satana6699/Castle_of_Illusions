@@ -7,7 +7,9 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(Rigidbody))]
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private GameSettings gameSettings;
+    
+    private float _speed = 10f;
     [SerializeField] private ParticleSystem particleBoom;
     [SerializeField] private float timeNoBoom = 0.2f;
     
@@ -17,6 +19,20 @@ public class Bomb : MonoBehaviour
     private Vector3 _startPoint;
     private float _timerTimeNoBoom = 0f;
     private bool _canBoom = false;
+    
+    void Start()
+    {
+        if (gameSettings)
+        {
+            _speed = gameSettings.speedDistanceBossAttack;
+        }
+        
+        _startPoint = transform.position;
+        if (_targetPosition)
+        {
+            StartCoroutine(MoveProjectile(_targetPosition.position));
+        }
+    }
     
     public void Initialize(Transform targetPosition, float height)
     {
@@ -33,15 +49,6 @@ public class Bomb : MonoBehaviour
             CanBoom();
         }
     }
-    
-    void Start()
-    {
-        _startPoint = transform.position;
-        if (_targetPosition != null)
-        {
-            StartCoroutine(MoveProjectile(_targetPosition.position));
-        }
-    }
 
     private void CanBoom()
     {
@@ -50,7 +57,7 @@ public class Bomb : MonoBehaviour
     
     private IEnumerator MoveProjectile(Vector2 targetPos)
     {
-        float duration = Vector2.Distance(_startPoint, targetPos) / speed;
+        float duration = Vector2.Distance(_startPoint, targetPos) / _speed;
         for (_time = 0; _time <= 1; _time += Time.deltaTime / duration)
         {
             float x = Mathf.Lerp(_startPoint.x, targetPos.x, _time);

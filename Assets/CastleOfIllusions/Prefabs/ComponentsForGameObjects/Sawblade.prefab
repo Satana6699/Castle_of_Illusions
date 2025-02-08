@@ -120,9 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc71ca078736fd44aaf44658d9514ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  animationDuration: 1
-  speedMove: 2.1
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
 --- !u!114 &3452523268767722519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,5 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5561b46cdaee1da458d0481ad209d493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   damage: 10
   damageInterval: 0.1

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         
         private void Start()
         {
-            if (gameSettings is not null)
+            if (gameSettings)
             {
                 _moveSpeed = gameSettings.playerSpeed;
                 _jumpForce = gameSettings.playerJumpForce;

@@ -15,29 +15,29 @@ public class PlayerHealth : MonoBehaviour
         [Header("UI Elements")]
         [SerializeField] protected Image healthBar;
 
-        //private RollingEffect _rollingEffect;
+        private RollingEffect _rollingEffect;
         
         [Header("GameManager")]
         [SerializeField] protected GameManager gameManager;
         
         void Start()
         {
-            if (gameSettings is not null)
+            if (gameSettings)
             {
                 _health = gameSettings.playerHealth;
             }
             
             _maxHealth = _health;
-            //_rollingEffect = GetComponent<RollingEffect>();
+            _rollingEffect = GetComponent<RollingEffect>();
         }
 
         
         public void TakeDamage(float damage)
         {
-            //if (_rollingEffect != null && _rollingEffect.CheckRoll())
-            //{
-            //    return;
-            //}
+            if (_rollingEffect != null && _rollingEffect.CheckRoll())
+            {
+                return;
+            }
             
             _health -= damage;
         

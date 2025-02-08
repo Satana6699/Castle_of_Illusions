@@ -6,9 +6,9 @@ public class BookHealth : EnemyHealth
 
     protected override void Start()
     {
-        if (gameSettings is not null)
+        if (gameSettings)
         {
-            health = gameSettings.bookHealth;
+            Health = gameSettings.bookHealth;
         }
         
         base.Start();

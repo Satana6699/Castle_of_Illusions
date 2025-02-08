@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3295df17eefb2034eb6f8fde8ddd6cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   animator: {fileID: 6317934474267290155}
   timeActivateSpike: 0.3
 --- !u!1 &4012322279353075917
@@ -433,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4b4bf73415bd846a23ff0b859ca9dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
 --- !u!1 &7525711737834718569
 GameObject:
   m_ObjectHideFlags: 0

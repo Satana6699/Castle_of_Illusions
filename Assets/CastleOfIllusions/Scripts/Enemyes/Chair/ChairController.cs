@@ -22,7 +22,7 @@ public class ChairController : MonoBehaviour
         private Vector3 _leftLimitPosition, _rightLimitPosition;
         private void Start()
         {
-            if (gameSettings is not null)
+            if (gameSettings)
             {
                 _moveSpeed = gameSettings.chairSpeed;
                 _gravityForce = gameSettings.chairGravityForce;
@@ -30,7 +30,7 @@ public class ChairController : MonoBehaviour
             
             animator = GetComponent<Animator>();
         
-            if (animator is not null)
+            if (animator)
             {
                 animator.SetBool("IsMoving", isMoving);
             }

@@ -99,6 +99,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2576302935487150563}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe9fde733aaca9d418c35a18f62a420f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 98741863527303666}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe9fde733aaca9d418c35a18f62a420f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6080416345741634191}
   m_SourcePrefab: {fileID: 100100000, guid: fe9fde733aaca9d418c35a18f62a420f, type: 3}
 --- !u!1 &1772570510873619703 stripped
 GameObject:
@@ -118,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168b1f8ba3904036a68d7d9ffdf92135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettings: {fileID: 0}
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   animator: {fileID: 4986209386737822775}
 --- !u!143 &2107954789455935257
 CharacterController:
@@ -158,8 +166,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c265f1915109a4ca9987cc67520680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettings: {fileID: 0}
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   animator: {fileID: 4986209386737822775}
+--- !u!114 &98741863527303666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772570510873619703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2753c0f8ab7da434f915a8d2d80503dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollSpeed: 5
+  rollDuration: 0.5
+  rollCooldown: 1
+  rollHeightCollider: 0.2
+  rollCenterCollider: {x: 0, y: 0.55, z: 0}
+  ignoreLayerCollisionPlayer: Player
+  ignoreLayerCollisionEnemy: Enemy
+--- !u!65 &6080416345741634191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772570510873619703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.4944067, z: 0.73865104}
+  m_Center: {x: -1.587225e-15, y: 0.33570576, z: 0.38830885}
 --- !u!95 &4986209386737822775 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: fe9fde733aaca9d418c35a18f62a420f,

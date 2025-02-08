@@ -1,8 +1,6 @@
-/*using System.Collections;
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))] 
-[RequireComponent(typeof(CapsuleCollider))]
 public class RollingEffect : MonoBehaviour
     {
         [Header("Rolling Settings")]
@@ -11,31 +9,32 @@ public class RollingEffect : MonoBehaviour
         [SerializeField] private float rollCooldown = 1f;
 
         [Header("Character Components")]
-        private Rigidbody _rigidbody = null;
         private Animator _animator = null;
         private PlayerController _playerController = null;
-        private CapsuleCollider _collider = null;
 
         [Header("Rolling State")]
+        [SerializeField] private float rollHeightCollider = 0f;
+        [SerializeField] private Vector3 rollCenterCollider = new Vector3(0f, 0.5f, 0f);
+        [SerializeField] private string ignoreLayerCollisionPlayer = "Player";
+        [SerializeField] private string ignoreLayerCollisionEnemy = "Enemy";
         private bool _isRolling = false;
         private float _rollTime = 0f;
 
         [Header("Collider Settings")]
+        private CharacterController _characterController = null;
         private float _baseHeightCollider;
         private Vector3 _baseCenterCollider;
 
         void Start()
         {
-            _rigidbody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
             _playerController = GetComponent<PlayerController>();
-            _playerController = GetComponent<PlayerController>();
-            _collider = GetComponent<CapsuleCollider>();
-            _baseHeightCollider = _collider.height;
-            _baseCenterCollider = _collider.center;
+            _characterController = GetComponent<CharacterController>();
+            _baseHeightCollider = _characterController.height;
+            _baseCenterCollider = _characterController.center;
         }
 
-        void Update()
+        private void Update()
         {
             _rollTime += Time.deltaTime;
         
@@ -44,16 +43,11 @@ public class RollingEffect : MonoBehaviour
                 StartCoroutine(Roll());
                 _rollTime = 0f;
             }
-        }
-
-        void FixedUpdate()
-        {
-            float impulse = 0.5f;
+            
             if (_isRolling)
             {
-                Vector3 targetPosition = _rigidbody.position + transform.forward * impulse * rollSpeed * Time.fixedDeltaTime;
-                targetPosition.y = _rigidbody.position.y;
-                _rigidbody.MovePosition(targetPosition);
+                Vector3 rollPosition = transform.forward.normalized * rollSpeed * Time.deltaTime;
+                _characterController.Move(rollPosition);
             }
         }
     
@@ -72,22 +66,32 @@ public class RollingEffect : MonoBehaviour
         {
             _isRolling = isRolling;
             _playerController.enabled = !isRolling;
+            
+            Physics.IgnoreLayerCollision(LayerMask.NameToLayer(ignoreLayerCollisionPlayer),
+                LayerMask.NameToLayer(ignoreLayerCollisionEnemy), isRolling);
+            
             RollAnimation(isRolling);
+            
+            //RollCollider(isRolling);
+            
+        }
+
+        private void RollCollider(bool isRolling)
+        {
             if (isRolling)
             {
-                _collider.height = 0.2f;
-                _collider.center = new Vector3(_collider.center.x, 0.1f, _collider.center.z);
+                _characterController.height = rollHeightCollider;
+                _characterController.center = rollCenterCollider;
             }
             else
             {
-                _collider.height = _baseHeightCollider;
-                _collider.center = _baseCenterCollider;
+                _characterController.height = _baseHeightCollider;
+                _characterController.center = _baseCenterCollider;
             }
-            
         }
-    
+
         private void RollAnimation(bool isRolled)
         {
-            //_animator.SetBool("Roll", isRolled);
+            _animator.SetBool("Roll", isRolled);
         }
-    }*/
+    }

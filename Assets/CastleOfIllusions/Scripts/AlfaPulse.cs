@@ -21,7 +21,7 @@ public class AlphaPulse : MonoBehaviour
 
     private void Update()
     {
-        if (targetImage == null) return;
+        if (!targetImage) return;
         float newAlpha = Mathf.Lerp(minAlpha, maxAlpha, (Mathf.Sin(Time.time * pulseSpeed) + 1f) / 2f);
         targetImage.color = new Color(_originalColor.r, _originalColor.g, _originalColor.b, newAlpha);
     }

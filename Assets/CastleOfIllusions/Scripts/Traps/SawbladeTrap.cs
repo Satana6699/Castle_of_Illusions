@@ -31,7 +31,8 @@ public class SawbladeTrap : MonoBehaviour
         foreach (GameObject obj in _sawBladeObjects)
         {
             SawbladeObject sawBladeObject = obj.GetComponent<SawbladeObject>();
-            if (sawBladeObject is not null)
+            
+            if (sawBladeObject)
             {
                 if (Mathf.Approximately(sawBladeObject.MoveInput, -1) &&
                     sawBladeObject.transform.position.x <= leftPositionSawBlade.transform.position.x)

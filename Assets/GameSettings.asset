@@ -12,21 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6e78996ae9e4349953c1cffbef6d48, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  playerHealth: 500
-  playerDamage: 20
-  playerSpeedAttck: 1
+  playerHealth: 120
+  playerDamage: 15
+  playerSpeedAttack: 1
   playerSpeed: 5
   playerGravityForce: -35
-  playerJumpForce: 2
-  chairHealth: 50
-  chairDamage: 20
+  playerJumpForce: 1.5
+  chairHealth: 60
+  chairDamage: 15
   chairSpeed: 2
   chairGravityForce: -30
-  bookHealth: 0
-  bossHealth: 50
+  bookHealth: 50
+  bookDamage: 15
+  bookTimeBetweenShots: 0.2
+  bookTimeBetweenQueue: 2
+  countBullet: 3
+  bookOffsetVectorForTarget: {x: 0, y: 0.3, z: 0}
+  speedBulletBook: 15
+  timeLiveBulletBook: 2
+  bookSpeed: 2
+  speedPercentRandom: 5
+  waitTime: 0.6
+  bossHealth: 100
   bossDamage: 10
+  distanceForDistanceAttack: 8
+  bossAttackCooldown: 3
+  bossMoveSpeed: 5
   bossJumpForce: 3
   bossGravityForce: -30
-  distanceForDistanceAttack: 5
-  bossAttackCooldown: 3
-  trapDamage: 1
+  bossHeightDistanceAttack: 8
+  speedDistanceBossAttack: 8
+  damageSawblade: 2
+  speedMoveSawblade: 5
+  animationDurationSawbladeRotation: 1
+  coolDownDartTrap: 1.5
+  offsetDartTrapInActvate: {x: 0, y: 0.04, z: 0}
+  timeActivateSpike: 0.3
+  spikeDamage: 10
+  chanceDropHealth: 50
+  heal: 50
+  durationAnimationHeal: 2

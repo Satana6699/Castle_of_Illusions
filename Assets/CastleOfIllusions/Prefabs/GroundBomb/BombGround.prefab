@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c82a431b39dfb41a1203c8c093c805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
   boomParticles: {fileID: 5029572670702857318, guid: bf95987739cfb9846943360273bb52b3,
     type: 3}
 --- !u!65 &6838972885843497089

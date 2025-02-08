@@ -1,22 +1,34 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class ChanceDropHealth : MonoBehaviour
 {
-    [SerializeField] private float chanceDrop = 50;
+    [SerializeField] private GameSettings gameSettings;
+    
+    private float _chanceDrop = 1f;
     
     [SerializeField] private GameObject healthGameObject;
+
+    private void Start()
+    {
+        if (gameSettings)
+        {
+            _chanceDrop = gameSettings.chanceDropHealth;
+        }
+    }
     
-    bool Chance(float percent) {
+    private bool Chance(float percent) {
         return Random.value <= percent / 100f;
     }
 
-    private void OnDestroy()
+    public void SpawnHealInChance()
     {
-        if (Chance(chanceDrop)) {
+        if (Chance(_chanceDrop)) {
             Instantiate(healthGameObject, transform.position, Quaternion.identity);
         }
     }

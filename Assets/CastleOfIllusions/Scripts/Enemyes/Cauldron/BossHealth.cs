@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChairHealth : EnemyHealth
+public class BossHealth : EnemyHealth
 {
     [SerializeField] private GameSettings gameSettings;
 
@@ -8,9 +8,9 @@ public class ChairHealth : EnemyHealth
     {
         if (gameSettings)
         {
-            Health = gameSettings.chairHealth;
+            Health = gameSettings.bossHealth;
         }
-        
+            
         base.Start();
     }
 }

@@ -6,12 +6,13 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(CharacterController))]
 public class CauldronJumpAtack : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 6f;
-    [SerializeField] private float jumpForce = 4f;
-    [SerializeField] private float gravityForce = -40f;
-    [SerializeField] private float forcePlayer = 5f;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameSettings gameSettings;
     
+    private float _moveSpeed = 6f;
+    private float _jumpForce = 4f;
+    private float _gravityForce = -40f;
+    
+    [SerializeField] private GameObject player;
     [SerializeField] private GameObject boomGroundPrefab;
     
     private CharacterController _characterController;
@@ -25,6 +26,13 @@ public class CauldronJumpAtack : MonoBehaviour
     
     void Start()
     {
+        if (gameSettings)
+        {
+            _moveSpeed = gameSettings.bossMoveSpeed;
+            _jumpForce = gameSettings.bossJumpForce;
+            _gravityForce = gameSettings.bossGravityForce;
+        }
+        
         _characterController = GetComponent<CharacterController>();
         _playerLayer = LayerMask.NameToLayer("Player");
         _enemyLayer = LayerMask.NameToLayer("Enemy");
@@ -42,7 +50,7 @@ public class CauldronJumpAtack : MonoBehaviour
         Move();
         
         // Use gravity
-        _velocity.y += gravityForce * Time.deltaTime;
+        _velocity.y += _gravityForce * Time.deltaTime;
             
         // freeze z
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -62,13 +70,13 @@ public class CauldronJumpAtack : MonoBehaviour
         {
             Vector3 jumpVector = player.transform.position - transform.position;
             _moveX = new Vector3(jumpVector.x, 0, 0).normalized.x;
-            _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravityForce);
+            _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravityForce);
         }
     }
     
     private void Move()
     {
-        Vector3 move = Vector3.right * _moveX * moveSpeed;
+        Vector3 move = Vector3.right * _moveX * _moveSpeed;
 
         move.y = _velocity.y;
 
@@ -105,7 +113,7 @@ public class CauldronJumpAtack : MonoBehaviour
         forceVector = new Vector3(forceVector.x, 1, 0).normalized;
         DisablePlayerBossCollision();
         
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         EnablePlayerBossCollision();
     }
     

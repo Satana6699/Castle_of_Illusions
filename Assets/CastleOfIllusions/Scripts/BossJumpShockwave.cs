@@ -11,12 +11,12 @@ public class BossJumpShockwave : MonoBehaviour
 
     private void Start()
     {
-        if (gameSettings is not null)
+        if (gameSettings)
         {
             _damage = gameSettings.bossDamage;
         }
         
-        if (boomParticles is not null)
+        if (boomParticles)
         {
             Instantiate(boomParticles, transform.position, Quaternion.identity);
 
@@ -26,14 +26,9 @@ public class BossJumpShockwave : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
-            
-            if (playerHealth is not null)
-            {
-                playerHealth.TakeDamage(_damage);
-            }
+            playerHealth.TakeDamage(_damage);
         }
     }
 

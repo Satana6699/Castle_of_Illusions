@@ -2115,7 +2115,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 768647115}
     - target: {fileID: 4744854682475787042, guid: bc5f60c29e0fc6a47a88cf43072e464f,
         type: 3}
       propertyPath: m_Name
@@ -7624,10 +7624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f99b5ee4933c0343903807fd0f6b5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  jumpForce: 4
-  gravityForce: -40
-  forcePlayer: 2
+  gameSettings: {fileID: 0}
   player: {fileID: 0}
   boomGroundPrefab: {fileID: 629149558937988513, guid: 48e07dddb59f2ce4da3bb181d29404d1,
     type: 3}
@@ -7643,9 +7640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09887a85642e8bc4baf64800d4b4dd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 0}
   bombPrefab: {fileID: 525939892084107036, guid: 9052d66b3ca90f24892d4c0971c5f3df,
     type: 3}
-  height: 10
   player: {fileID: 0}
   piuTransform: {fileID: 106434763}
 --- !u!4 &697992629 stripped
@@ -7986,7 +7983,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 768647115}
     - target: {fileID: 4744854682475787042, guid: bc5f60c29e0fc6a47a88cf43072e464f,
         type: 3}
       propertyPath: m_Name
@@ -8418,10 +8415,17 @@ PrefabInstance:
       value: 2.3765001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7410856604013736720, guid: 178aa873e874fc1419cb152a5cc3f482, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 178aa873e874fc1419cb152a5cc3f482, type: 3}
+--- !u!1 &768647115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5483269912397150379, guid: 178aa873e874fc1419cb152a5cc3f482,
+    type: 3}
+  m_PrefabInstance: {fileID: 768647114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779756081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12760,7 +12764,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 768647115}
     - target: {fileID: 4744854682475787042, guid: bc5f60c29e0fc6a47a88cf43072e464f,
         type: 3}
       propertyPath: m_Name

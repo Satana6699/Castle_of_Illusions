@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class DartTrap : MonoBehaviour
 {
+    [SerializeField] private GameSettings gameSettings;
+    
     [Header("Bullet Settings")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletStartPosition;
 
     [Header("Trap Settings")]
-    [SerializeField] private float coolDownTrap = 2f;
+    private float _coolDownTrap = 2f;
+    private Vector3 _offsetDartTrapInActvate = new Vector3(0f, 0.05f, 0f);
     private float _timerCoolDownTrap = 0f;
 
     private bool _isActive = false;
@@ -17,6 +20,12 @@ public class DartTrap : MonoBehaviour
 
     void Start()
     {
+        if (gameSettings)
+        {
+            _coolDownTrap = gameSettings.coolDownDartTrap;
+            _offsetDartTrapInActvate = gameSettings.offsetDartTrapInActvate;
+        }
+        
         _startPosition = transform.position;
     }
 
@@ -26,7 +35,7 @@ public class DartTrap : MonoBehaviour
         {
             _timerCoolDownTrap += Time.deltaTime;
 
-            if (_timerCoolDownTrap >= coolDownTrap)
+            if (_timerCoolDownTrap >= _coolDownTrap)
             {
                 _timerCoolDownTrap = 0f;
                 _isActive = false;
@@ -47,7 +56,7 @@ public class DartTrap : MonoBehaviour
             var bulletInstantiate = 
                 Instantiate(bullet, bulletStartPosition.transform.position, bulletStartPosition.transform.rotation);
             _isActive = true;
-            transform.position -= new Vector3(0f, 0.02f, 0f);
+            transform.position -= _offsetDartTrapInActvate;
         }
     }
 }

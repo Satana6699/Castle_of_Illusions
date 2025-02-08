@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(CauldronAtack))]
+[RequireComponent(typeof(CauldronDistanceAtack))]
 [RequireComponent(typeof(CauldronJumpAtack))]
 public class CauldronController : MonoBehaviour
 {
@@ -14,20 +14,20 @@ public class CauldronController : MonoBehaviour
     private float _attackCooldown = 3f;
     
     private CauldronJumpAtack _jumpAttack;
-    private CauldronAtack _attack;
+    private CauldronDistanceAtack _attack;
     private float _timerAttackCooldown = 0f;
 
 
     private void Start()
     {
-        if (gameSettings is not null)
+        if (gameSettings)
         {
             _distanceForDistanceAttack = gameSettings.distanceForDistanceAttack;
             _attackCooldown = gameSettings.bossAttackCooldown;
         }
         
         _jumpAttack = GetComponent<CauldronJumpAtack>();
-        _attack = GetComponent<CauldronAtack>();
+        _attack = GetComponent<CauldronDistanceAtack>();
         _timerAttackCooldown = _attackCooldown;
     }
 
