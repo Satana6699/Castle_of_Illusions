@@ -37,11 +37,13 @@ MonoBehaviour:
   bossDamage: 10
   distanceForDistanceAttack: 8
   bossAttackCooldown: 3
-  bossMoveSpeed: 5
+  bossMoveSpeed: 0.3
   bossJumpForce: 3
   bossGravityForce: -30
+  bossDetectionRadius: 12
   bossHeightDistanceAttack: 8
   speedDistanceBossAttack: 8
+  bossMinDistanceToPlayer: 2
   damageSawblade: 2
   speedMoveSawblade: 5
   animationDurationSawbladeRotation: 1

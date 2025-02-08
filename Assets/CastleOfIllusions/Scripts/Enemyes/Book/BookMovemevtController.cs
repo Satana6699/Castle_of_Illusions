@@ -48,7 +48,7 @@ public class BockMovemevtController : MonoBehaviour
 
     void Update()
     {
-        AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.flyingBookAttackSound);
+        AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.flyingBookSound);
     }
     
     private void NewRandomValue()

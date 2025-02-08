@@ -3,88 +3,88 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SoundSettings", menuName = "Settings/Game Settings")]
 public class SoundSettings : ScriptableObject
 {
-    // Фоновая музыка
+    // 1 Фоновая музыка
     public AudioClip backgroundMusic;
     
     [Header("Player Sounds")]
-    // Звук передвижения игрока
+    // 2 Звук передвижения игрока
     public AudioClip playerMovementSound; //
 
-    // Звук прыжка игрока
+    // 3 Звук прыжка игрока
     public AudioClip playerJumpSound; //
 
-    // Звук атаки мечом
+    // 4 Звук атаки мечом
     public AudioClip swordAttackSound; //
 
-    // Звук попадания мечом
+    // 5 Звук попадания мечом
     public AudioClip swordHitSound; //
 
-    // Звук получения урона игровым персонажем
+    // 19 Звук получения урона игровым персонажем
     public AudioClip playerDamageSound; //
 
-    // Звук смерти игрового персонажа
+    // 20 Звук смерти игрового персонажа
     public AudioClip playerDeathSound; //
 
-    // Звук лечения
+    // 21 Звук лечения
     public AudioClip healthPickupSound; //
 
-    // Звук кувырка игрового персонажа
+    // 22 Звук кувырка игрового персонажа
     public AudioClip playerRollSound; //
     
     [Header("Book Sounds")]
-    // Звук атаки летающей книги
-    public AudioClip flyingBookAttackSound; //
+    // 8 Звук летающей книги
+    public AudioClip flyingBookSound; //
 
-    // Звук атаки книги
+    // 6 Звук атаки книги
     public AudioClip attackBookSound; //
     
     [Header("Chest Sounds")]
-    // Звук укуса мимика
+    // 7 Звук укуса мимика
     public AudioClip mimicBiteSound;
 
     [Header("Chair Sounds")]
-    // Звук атаки табуретки
+    // 9 Звук атаки табуретки
     public AudioClip chairAttackSound; //
 
     [Header("UI Sounds")]
-    // Звук взаимодействия с UI
+    // 10 Звук взаимодействия с UI
     public AudioClip uiInteractionSound;
 
-    // Звук выигрыша
+    // 11 Звук выигрыша
     public AudioClip winSound;
     
-    // Звук деактивации ловушки шипов
+    // 25? Звук деактивации ловушки шипов
     public AudioClip deactivateSpikesTrapSound;
     
     [Header("Boss Sounds")]
-    // Звук передвижения котла
-    public AudioClip boilerMovementSound;
+    // 12 Звук передвижения котла
+    public AudioClip cauldronMovementSound;
 
-    // Звук дальней атаки
+    // 13 Звук дальней атаки кртла
     public AudioClip distantAttackSound;
 
-    // Звук прыжка котла
+    // 14 Звук прыжка котла
     public AudioClip boilerJumpSound;
 
-    // Звук ближней атаки котла
+    // 15 Звук ближней атаки котла
     public AudioClip boilerCloseAttackSound;
 
-    // Фоновая музыка босс-файта
+    // 26? Фоновая музыка босс-файта
     public AudioClip bossFightBackgroundMusic;
     
     [Header("trap Sounds")]
-    // Звук пилы
+    //  16 Звук пилы
     public AudioClip sawSound; 
 
-    // Звук шипов
+    // 17 Звук шипов
     public AudioClip spikesSound;
 
-    // Звук полёта дротиков
+    //  18 Звук полёта дротиков
     public AudioClip dartFlightSound;
 
-    // Звук открывания двери
+    // 23 Звук открывания двери
     public AudioClip doorOpenSound;
 
-    // Звук подъёма на лестнице
+    // 24? Звук подъёма на лестнице
     public AudioClip ladderClimbSound;
 }

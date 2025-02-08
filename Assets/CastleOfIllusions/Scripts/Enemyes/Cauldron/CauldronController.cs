@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CauldronDistanceAtack))]
 [RequireComponent(typeof(CauldronJumpAtack))]
@@ -12,11 +9,13 @@ public class CauldronController : MonoBehaviour
     
     private float _distanceForDistanceAttack = 3f;
     private float _attackCooldown = 3f;
-    
+    private float _detectionRadius = 5f;
+
     private CauldronJumpAtack _jumpAttack;
     private CauldronDistanceAtack _attack;
     private float _timerAttackCooldown = 0f;
 
+    private Transform _player;
 
     private void Start()
     {
@@ -24,8 +23,9 @@ public class CauldronController : MonoBehaviour
         {
             _distanceForDistanceAttack = gameSettings.distanceForDistanceAttack;
             _attackCooldown = gameSettings.bossAttackCooldown;
+            _detectionRadius = gameSettings.bossDetectionRadius;
         }
-        
+
         _jumpAttack = GetComponent<CauldronJumpAtack>();
         _attack = GetComponent<CauldronDistanceAtack>();
         _timerAttackCooldown = _attackCooldown;
@@ -34,23 +34,32 @@ public class CauldronController : MonoBehaviour
     private void Update()
     {
         _timerAttackCooldown += Time.deltaTime;
+        CheckForPlayer();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void CheckForPlayer()
     {
-        if (other.CompareTag("Player"))
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _detectionRadius);
+        
+        foreach (var hitCollider in hitColliders)
         {
-            if (other)
-                StartCoroutine(Attack(other));
+            if (hitCollider.CompareTag("Player"))
+            {
+                _player = hitCollider.transform;
+                StartCoroutine(Attack(_player));
+                break;
+            }
         }
     }
 
-    private IEnumerator Attack(Collider other)
+    private IEnumerator Attack(Transform playerTransform)
     {
         yield return new WaitForSeconds(0.1f);
-        
-        var distance = Vector3.Distance(transform.position, other.transform.position);
-        
+
+        if (!playerTransform) yield break;
+
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+
         if (_timerAttackCooldown >= _attackCooldown)
         {
             if (distance >= _distanceForDistanceAttack)
@@ -64,5 +73,11 @@ public class CauldronController : MonoBehaviour
 
             _timerAttackCooldown = 0;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _detectionRadius);
     }
 }

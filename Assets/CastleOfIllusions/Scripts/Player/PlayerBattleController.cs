@@ -9,6 +9,7 @@ public class PlayerBattleController : MonoBehaviour
     private float _speedAttack = 1f;
     private float _timerAttack = 0f;
     private float _damage = 10f;
+    private bool _isAttacking = false;
     
     [Header("Sword Settings")]
     [SerializeField] private Animator animator;
@@ -44,6 +45,7 @@ public class PlayerBattleController : MonoBehaviour
     public void RegisterDamageEnable()
     {
         _registerDamageZone.enabled = true;
+        _isAttacking = true;
     }
     
     public void RegisterDamageDisable()
@@ -54,6 +56,7 @@ public class PlayerBattleController : MonoBehaviour
     private void RegisterDamageDisableWaitSeconds()
     {
         _registerDamageZone.enabled = false;
+        _isAttacking = false;
     }
     
     private void Attack()
@@ -64,7 +67,7 @@ public class PlayerBattleController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out EnemyHealth enemyHealth))
+        if (other.TryGetComponent(out EnemyHealth enemyHealth) && _isAttacking)
         {
             enemyHealth.TakeDamage(_damage);
             AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordHitSound);

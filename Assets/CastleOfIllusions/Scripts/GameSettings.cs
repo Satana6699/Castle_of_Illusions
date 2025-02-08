@@ -57,14 +57,16 @@ public class GameSettings : ScriptableObject
     public float distanceForDistanceAttack = 5f;
     public float bossAttackCooldown = 3f;
     [Space(10)]
-    [Header("Jump Stats")]
+    [Header("Move Stats")]
     public float bossMoveSpeed = 5f;
     public float bossJumpForce = 3f;
     public float bossGravityForce = -30f;
     [Space(10)]
     [Header("Distance Attack Stats")]
+    public float bossDetectionRadius = 5f;
     public float bossHeightDistanceAttack = 8f;
     public float speedDistanceBossAttack = 8f;
+    public float bossMinDistanceToPlayer = 1.2f;
     
     [Space(50)]
     [Header("Traps Stats")]

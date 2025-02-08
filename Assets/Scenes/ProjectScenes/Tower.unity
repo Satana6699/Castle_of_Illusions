@@ -8239,34 +8239,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2635506000539865760, guid: 178aa873e874fc1419cb152a5cc3f482,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.5180001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2635506000539865760, guid: 178aa873e874fc1419cb152a5cc3f482,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.6545
-      objectReference: {fileID: 0}
     - target: {fileID: 4780610750944200016, guid: 178aa873e874fc1419cb152a5cc3f482,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139641005983965713, guid: 178aa873e874fc1419cb152a5cc3f482,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.518
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139641005983965713, guid: 178aa873e874fc1419cb152a5cc3f482,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.581
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139641005983965713, guid: 178aa873e874fc1419cb152a5cc3f482,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5342949493910653289, guid: 178aa873e874fc1419cb152a5cc3f482,
@@ -8274,30 +8249,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
-    - target: {fileID: 5483269912397150379, guid: 178aa873e874fc1419cb152a5cc3f482,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8751801732168559747, guid: 178aa873e874fc1419cb152a5cc3f482,
+    - target: {fileID: 6401869009706770647, guid: 178aa873e874fc1419cb152a5cc3f482,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5180001
+      value: 24.11
       objectReference: {fileID: 0}
-    - target: {fileID: 8751801732168559747, guid: 178aa873e874fc1419cb152a5cc3f482,
+    - target: {fileID: 6401869009706770647, guid: 178aa873e874fc1419cb152a5cc3f482,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6545
+      value: -3.26
       objectReference: {fileID: 0}
+    - target: {fileID: 6845798802671461851, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: sceneName
+      value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845798802671461851, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: interactiveCanvas
+      value: 
+      objectReference: {fileID: 768647116}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7410856604013736720, guid: 178aa873e874fc1419cb152a5cc3f482, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 178aa873e874fc1419cb152a5cc3f482, type: 3}
 --- !u!1 &768647115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5483269912397150379, guid: 178aa873e874fc1419cb152a5cc3f482,
+    type: 3}
+  m_PrefabInstance: {fileID: 768647114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &768647116 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 641952955192722653, guid: 178aa873e874fc1419cb152a5cc3f482,
     type: 3}
   m_PrefabInstance: {fileID: 768647114}
   m_PrefabAsset: {fileID: 0}
@@ -14468,7 +14453,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 181006837417475168, guid: d429c8a2280208c43ace747d82fa1864,
+    - target: {fileID: 1767289380477563505, guid: d429c8a2280208c43ace747d82fa1864,
         type: 3}
       propertyPath: player
       value: 
@@ -14532,11 +14517,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cauldron
-      objectReference: {fileID: 0}
-    - target: {fileID: 4302944737786620945, guid: d429c8a2280208c43ace747d82fa1864,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

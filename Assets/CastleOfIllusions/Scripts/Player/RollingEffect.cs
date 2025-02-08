@@ -38,7 +38,7 @@ public class RollingEffect : MonoBehaviour
         {
             _rollTime += Time.deltaTime;
         
-            if (_rollTime >= rollCooldown && Input.GetKeyDown(KeyCode.LeftShift) && !_isRolling)
+            if (_rollTime >= rollCooldown && Input.GetKeyDown(KeyCode.LeftShift) && !_isRolling && _characterController.isGrounded)
             {
                 StartCoroutine(Roll());
                 _rollTime = 0f;

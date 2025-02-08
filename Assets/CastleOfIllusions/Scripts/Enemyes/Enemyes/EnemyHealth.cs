@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
 
     private float _maxHealth;
     private ChanceDropHealth _chanceDropHealth;
+    
     protected virtual void Start()
     {
         _maxHealth = Health;

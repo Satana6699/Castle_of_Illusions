@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeTrap.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryLogic.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronMoveController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\RollingEffect.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronController.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\FreeCameraLogic.cs" />

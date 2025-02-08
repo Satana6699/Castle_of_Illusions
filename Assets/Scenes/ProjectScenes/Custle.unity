@@ -1652,6 +1652,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6401869009706770647, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401869009706770647, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845798802671461851, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: sceneName
+      value: Roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845798802671461851, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: timerForLoading
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845798802671461851, guid: 178aa873e874fc1419cb152a5cc3f482,
+        type: 3}
+      propertyPath: interactiveCanvas
+      value: 
+      objectReference: {fileID: 397554167}
     - target: {fileID: 8751801732168559747, guid: 178aa873e874fc1419cb152a5cc3f482,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1667,6 +1692,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 178aa873e874fc1419cb152a5cc3f482, type: 3}
+--- !u!223 &397554167 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 641952955192722653, guid: 178aa873e874fc1419cb152a5cc3f482,
+    type: 3}
+  m_PrefabInstance: {fileID: 397554166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &459126287
 PrefabInstance:
   m_ObjectHideFlags: 0
