@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74979b7b12346c198e579a8dffeddcb, type: 3}
+  m_Name: SoundSettings
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 0}
+  playerMovementSound: {fileID: 0}
+  playerJumpSound: {fileID: 0}
+  swordAttackSound: {fileID: 0}
+  swordHitSound: {fileID: 0}
+  playerDamageSound: {fileID: 0}
+  playerDeathSound: {fileID: 0}
+  healthPickupSound: {fileID: 0}
+  playerRollSound: {fileID: 0}
+  flyingBookAttackSound: {fileID: 0}
+  floatingBookSound: {fileID: 0}
+  mimicBiteSound: {fileID: 0}
+  stoolAttackSound: {fileID: 0}
+  uiInteractionSound: {fileID: 0}
+  winSound: {fileID: 0}
+  deactivateSpikesTrapSound: {fileID: 0}
+  boilerMovementSound: {fileID: 0}
+  distantAttackSound: {fileID: 0}
+  boilerJumpSound: {fileID: 0}
+  boilerCloseAttackSound: {fileID: 0}
+  bossFightBackgroundMusic: {fileID: 0}
+  sawSound: {fileID: 0}
+  spikesSound: {fileID: 0}
+  dartFlightSound: {fileID: 0}
+  doorOpenSound: {fileID: 0}
+  ladderClimbSound: {fileID: 0}

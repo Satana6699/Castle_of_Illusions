@@ -52,6 +52,7 @@
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\FreeCameraLogic.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\HealthObject.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chair\ChairHealth.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\AudioManager.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronJumpAtack.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bullet.cs" />
@@ -63,11 +64,12 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\DartTrap.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\BossJumpShockwave.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bomb.cs" />
-    <Compile Include="Assets\GameSattings.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\AlfaPulse.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\SoundSettings.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chair\ChairBattleController.cs" />
     <Compile Include="Assets\Red Nebula Studios\RNLowPolyDungeonLite\Scenes\Demo Scripts\ActivateProp.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\GameSettings.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\GameManager.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerBattleController.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleSampleCharacterControl.cs" />
