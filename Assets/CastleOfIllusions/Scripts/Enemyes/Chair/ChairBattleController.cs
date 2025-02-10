@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
     
 public class ChairBattleController : MonoBehaviour
@@ -24,21 +25,32 @@ public class ChairBattleController : MonoBehaviour
             animator = GetComponent<Animator>();
         }
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+
+    private void OnTriggerStay(Collider other)
     {
-        if (hit.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             _movementController?.StopMoving();
                 
-            Vector3 contactPoint = hit.point;
-            Vector3 targetDirection = contactPoint - transform.position;
+            Vector3 targetPos = other.gameObject.transform.position;
+            Vector3 targetDirection = targetPos - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             
-            _playerHealth = hit.gameObject.GetComponent<PlayerHealth>();
+            _playerHealth = other.gameObject.GetComponent<PlayerHealth>();
                 
             animator.SetBool("isAttacking", true);
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _playerHealth = null;
+            _movementController?.StartMoving();
+        }
+        
     }
 
     public void DamagePlayer()

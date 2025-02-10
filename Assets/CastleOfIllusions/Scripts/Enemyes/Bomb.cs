@@ -1,21 +1,20 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bomb : MonoBehaviour
 {
     [SerializeField] private GameSettings gameSettings;
-    
     [SerializeField] private ParticleSystem particleBoom;
+    
     private float _explosionRadius = 2f;
     private float _damage = 20f;
-    [SerializeField] private float timeNoBoom = 0.2f; 
+    [SerializeField] private float timeNoBoom = 0.2f;
 
     private float _speed = 10f;
     private float _arcHeight = 3f;
     private Vector3 _startPoint;
-    private Transform _targetPosition;
+    private Vector3 _targetPosition;
     private float _timerTimeNoBoom = 0f;
     private bool _canBoom = false;
 
@@ -29,43 +28,45 @@ public class Bomb : MonoBehaviour
         }
 
         _startPoint = transform.position;
-        if (_targetPosition)
-        {
-            StartCoroutine(MoveProjectile(_targetPosition.position));
-        }
+        StartCoroutine(MoveProjectile());
     }
 
     public void Initialize(Transform targetPosition, float height)
     {
-        _targetPosition = targetPosition;
+        _targetPosition = targetPosition.position;
         _arcHeight = height;
     }
 
     private void Update()
     {
         _timerTimeNoBoom += Time.deltaTime;
-
         if (_timerTimeNoBoom >= timeNoBoom)
         {
             _canBoom = true;
         }
     }
 
-    private IEnumerator MoveProjectile(Vector2 targetPos)
+    private IEnumerator MoveProjectile()
     {
-        float duration = Vector2.Distance(_startPoint, targetPos) / _speed;
-        for (float t = 0; t <= 1; t += Time.deltaTime / duration)
+        float duration = Vector3.Distance(_startPoint, _targetPosition) / _speed; // Время полета (постоянная скорость)
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
-            float x = Mathf.Lerp(_startPoint.x, targetPos.x, t);
-            float y = Mathf.Lerp(_startPoint.y, targetPos.y, t) + _arcHeight * Mathf.Sin(t * Mathf.PI);
-            transform.position = new Vector2(x, y);
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            // Линейное движение по XZ
+            Vector3 pos = Vector3.Lerp(_startPoint, _targetPosition, t);
+
+            // Добавление параболы по Y
+            pos.y += _arcHeight * Mathf.Sin(t * Mathf.PI);
+
+            transform.position = pos;
             yield return null;
         }
 
-        if (_canBoom)
-        {
-            Explode();
-        }
+        Explode();
     }
 
     void Explode()

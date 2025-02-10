@@ -810,6 +810,59 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3516189299895546667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3064745035954521141}
+  - component: {fileID: 807996533674392119}
+  m_Layer: 0
+  m_Name: Confiner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3064745035954521141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516189299895546667}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.534132, y: 2.357078, z: 1.8758926}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 824254001622161160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &807996533674392119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516189299895546667}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 29.38211, y: 6.2137923, z: 2.4596577}
+  m_Center: {x: 1.1206284, y: -0.9976604, z: -4.2074547}
 --- !u!1 &4067900565312565958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,6 +1624,7 @@ Transform:
   - {fileID: 8751801732168559747}
   - {fileID: 5139641005983965713}
   - {fileID: 6401869009706770647}
+  - {fileID: 3064745035954521141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6074321459728064054
@@ -2574,6 +2628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2635506000539865760}
   - component: {fileID: 6006772983306752013}
+  - component: {fileID: 7656587294655975237}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -2636,6 +2691,23 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3692633959262832791}
+--- !u!114 &7656587294655975237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316636450768429213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 1
+  m_BoundingVolume: {fileID: 807996533674392119}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &8715241238825051576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,6 +2926,11 @@ PrefabInstance:
       propertyPath: gameOverMenu
       value: 
       objectReference: {fileID: 1061545398809563182}
+    - target: {fileID: 8320577789733657656, guid: ebc6cba40ddab4f43867e11ecc52aefa,
+        type: 3}
+      propertyPath: noClickImage
+      value: 
+      objectReference: {fileID: 6074321459728064054}
     - target: {fileID: 8320577789733657656, guid: ebc6cba40ddab4f43867e11ecc52aefa,
         type: 3}
       propertyPath: vinnerGameMenu
@@ -3140,6 +3217,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasGame
       objectReference: {fileID: 0}
+    - target: {fileID: 7564783575075112066, guid: 7ca2c7bd43f01ee4481bfe342fb2c9e3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5911057671330908948}
     - target: {fileID: 7886071524551195268, guid: 7ca2c7bd43f01ee4481bfe342fb2c9e3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

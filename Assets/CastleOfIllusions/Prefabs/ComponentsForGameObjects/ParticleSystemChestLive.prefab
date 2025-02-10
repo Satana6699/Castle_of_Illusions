@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6623843917769478536}
   - component: {fileID: 7977874571621633603}
   - component: {fileID: 4577077496928246162}
-  - component: {fileID: 9179404963312862868}
   m_Layer: 0
   m_Name: ParticleSystemChestLive
   m_TagString: Untagged
@@ -44,7 +43,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 8.42
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4898,15 +4897,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &9179404963312862868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3383002323553024339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d78243a3dfb3df4e91714d09db6bce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

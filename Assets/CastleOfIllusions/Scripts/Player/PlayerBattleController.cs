@@ -50,7 +50,7 @@ public class PlayerBattleController : MonoBehaviour
     
     public void RegisterDamageDisable()
     {
-        Invoke(nameof(RegisterDamageDisableWaitSeconds), 0.3f);
+        Invoke(nameof(RegisterDamageDisableWaitSeconds), 0.1f);
     }
 
     private void RegisterDamageDisableWaitSeconds()

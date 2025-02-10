@@ -12,13 +12,20 @@ public class AudioManager : MonoBehaviour
     private List<AudioSource> _sfxSources = new List<AudioSource>();
     private Dictionary<string, AudioSource> _activeSounds = new Dictionary<string, AudioSource>();
     
+    private float _masterVolume = 1f;
+    private float _musicVolume = 1f;
+    private float _sfxVolume = 1f;
+
+    public float MasterVolume { get { return _masterVolume; } }
+    public float MusicVolume { get { return _musicVolume; } }
+    public float SFXVolume { get { return _sfxVolume; } }
+    
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(Instance);
         }
         else
         {
@@ -40,6 +47,7 @@ public class AudioManager : MonoBehaviour
         if (_musicSource.clip == music) return;
 
         _musicSource.clip = music;
+        _musicSource.volume = _musicVolume * _masterVolume;
         _musicSource.Play();
     }
 
@@ -49,13 +57,13 @@ public class AudioManager : MonoBehaviour
 
         AudioSource source = GetFreeAudioSource();
         source.clip = sound;
+        source.volume = _sfxVolume * _masterVolume;
         source.Play();
     }
 
-    // перебивание одинаковых звуков
     public void PlaySFXOverride(AudioClip sound)
     {
-        if (!sound) return;
+        if (sound == null) return;
 
         string soundName = sound.name;
 
@@ -63,24 +71,22 @@ public class AudioManager : MonoBehaviour
         {
             _activeSounds[soundName].Stop();
             _activeSounds[soundName].clip = sound;
+            _activeSounds[soundName].volume = _sfxVolume * _masterVolume;
             _activeSounds[soundName].Play();
         }
         else
         {
             AudioSource source = GetFreeAudioSource();
             source.clip = sound;
+            source.volume = _sfxVolume * _masterVolume;
             source.Play();
             _activeSounds[soundName] = source;
         }
     }
 
-    // если уже играет, не запускаем
     public void PlaySFXNoRepeat(AudioClip sound)
     {
-        if (!sound)
-        {
-            return;
-        }
+        if (sound == null) return;
 
         string soundName = sound.name;
 
@@ -91,6 +97,7 @@ public class AudioManager : MonoBehaviour
 
         AudioSource source = GetFreeAudioSource();
         source.clip = sound;
+        source.volume = _sfxVolume * _masterVolume;
         source.Play();
         _activeSounds[soundName] = source;
     }
@@ -107,23 +114,37 @@ public class AudioManager : MonoBehaviour
         _sfxSources.Add(newSource);
         return newSource;
     }
-    
-    public void MuteAllSounds()
+
+    // общую громкость
+    public void SetMasterVolume(float volume)
     {
-        _musicSource.mute = true;
+        _masterVolume = volume;
+        ApplyVolumeSettings();
+    }
+
+    // громкость музыки
+    public void SetMusicVolume(float volume)
+    {
+        _musicVolume = volume;
+        _musicSource.volume = _musicVolume * _masterVolume;
+    }
+
+    // громкость звуковых эффектов
+    public void SetSFXVolume(float volume)
+    {
+        _sfxVolume = volume;
         foreach (var source in _sfxSources)
         {
-            source.mute = true;
+            source.volume = _sfxVolume * _masterVolume;
         }
     }
 
-    public void UnmuteAllSounds()
+    private void ApplyVolumeSettings()
     {
-        _musicSource.mute = false;
+        _musicSource.volume = _musicVolume * _masterVolume;
         foreach (var source in _sfxSources)
         {
-            source.mute = false;
+            source.volume = _sfxVolume * _masterVolume;
         }
     }
-
 }

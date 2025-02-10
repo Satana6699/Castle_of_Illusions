@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
             _moveX = Input.GetAxis("Horizontal");
             
-            if (_moveX != 0)
+            if (_moveX != 0 && _isGrounded)
             {
                 AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerMovementSound);
             }

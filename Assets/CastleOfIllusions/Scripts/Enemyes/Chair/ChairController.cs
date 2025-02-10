@@ -70,6 +70,9 @@ public class ChairController : MonoBehaviour
             
             // Gravity
             _velocity.y += _gravityForce * Time.deltaTime;
+            
+            // freeze z
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
 
         public void StopMoving()

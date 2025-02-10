@@ -45,22 +45,26 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.45f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestInteractive.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeTrap.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\EnemyHealth.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestHealth.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryLogic.cs" />
-    <Compile Include="Assets\DoorOpen.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronMoveController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\RollingEffect.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronController.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\FreeCameraLogic.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\HealthObject.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chair\ChairHealth.cs" />
-    <Compile Include="Assets\Princessa.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\DoorOpen.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\AudioManager.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronJumpAtack.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Princessa.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\OpenTelegram.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestBattleController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bullet.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryWearLogic.cs" />
-    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Enemyes\EnemyHealth.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Book\BookHealth.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\BossHealth.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SpikeAtack.cs" />
@@ -80,6 +84,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Traps\SawbladeAtack.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\ChanceDropHealth.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chair\ChairController.cs" />
+    <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Book\BookMovemevtController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\NextLocationScript.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Cauldron\CauldronDistanceAtack.cs" />

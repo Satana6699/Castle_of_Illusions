@@ -40,7 +40,7 @@ public class SoundSettings : ScriptableObject
     
     [Header("Chest Sounds")]
     // 7 Звук укуса мимика
-    public AudioClip mimicBiteSound;
+    public AudioClip chestAttackSound;
 
     [Header("Chair Sounds")]
     // 9 Звук атаки табуретки
@@ -87,4 +87,5 @@ public class SoundSettings : ScriptableObject
 
     // 24? Звук подъёма на лестнице
     public AudioClip ladderClimbSound;
+    
 }
