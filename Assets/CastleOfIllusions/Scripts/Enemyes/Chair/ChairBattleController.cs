@@ -28,6 +28,7 @@ public class ChairBattleController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
         if (other.gameObject.CompareTag("Player"))
         {
             _movementController?.StopMoving();

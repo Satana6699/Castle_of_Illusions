@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6e78996ae9e4349953c1cffbef6d48, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  playerHealth: 200
+  playerHealth: 180
   playerDamage: 15
-  playerSpeedAttack: 1
+  playerSpeedAttack: 0.5
   playerSpeed: 5
   playerGravityForce: -35
   playerJumpForce: 1.5
@@ -24,19 +24,20 @@ MonoBehaviour:
   chairGravityForce: -30
   chestGravityForce: -30
   chestSpeed: 2
-  chestHealth: 30
+  chestHealth: 70
+  chestDamage: 30
   bookHealth: 50
   bookDamage: 15
-  bookTimeBetweenShots: 0.2
+  bookTimeBetweenShots: 0.3
   bookTimeBetweenQueue: 2
   countBullet: 3
   bookOffsetVectorForTarget: {x: 0, y: 0.3, z: 0}
-  speedBulletBook: 15
-  timeLiveBulletBook: 2
+  speedBulletBook: 10
+  timeLiveBulletBook: 3
   bookSpeed: 2
   speedPercentRandom: 5
   waitTime: 0.6
-  bossHealth: 60
+  bossHealth: 80
   bossDamage: 20
   distanceForDistanceAttack: 4
   bossAttackCooldown: 1.8

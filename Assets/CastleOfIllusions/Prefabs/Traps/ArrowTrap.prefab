@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 2c165e643e339864cb6c2013a4bf65bd, type: 2}
-  bullet: {fileID: 7724114433229599309, guid: aeae7440520c5a348b08382c2618f196, type: 3}
+  bullet: {fileID: 1775380941553476005, guid: d279e5925ff0d264b8a700e4257c41a8, type: 3}
   bulletStartPosition: {fileID: 4860918163019030895}
 --- !u!1 &4860918163019030895
 GameObject:

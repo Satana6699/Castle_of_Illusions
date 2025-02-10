@@ -71,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
             AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerDeathSound);
 
             gameManager?.EndGame();
+            Time.timeScale = 0f;
             Destroy(gameObject);
         }
     }

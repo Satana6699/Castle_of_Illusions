@@ -30,11 +30,10 @@ public class GameSettings : ScriptableObject
 
     [Space(50)]
     [Header("Chest Stats")]
-    [Space(10)]
-    [Header("Battle Stats")]
     public float chestGravityForce = -30f;
     public float chestSpeed = 2f;
     public float chestHealth = 30f;
+    public float chestDamage = 30f;
     
     
     [Space(50)]

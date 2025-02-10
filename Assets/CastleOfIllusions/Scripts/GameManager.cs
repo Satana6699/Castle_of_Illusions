@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         
-        if (masterVolumeSlider)
+        if (masterVolumeSlider && AudioManager.Instance)
             masterVolumeSlider.value = AudioManager.Instance.MasterVolume;
         
-        if (musicVolumeSlider)
+        if (musicVolumeSlider && AudioManager.Instance)
             musicVolumeSlider.value = AudioManager.Instance.MusicVolume;
         
-        if (soundVolumeSlider)
+        if (soundVolumeSlider && AudioManager.Instance)
             soundVolumeSlider.value = AudioManager.Instance.SFXVolume;
     }
 

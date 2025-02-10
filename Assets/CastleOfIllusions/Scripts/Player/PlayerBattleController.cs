@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine;
 using UnityEngine.Serialization;
+using System.Collections.Generic;
 
 public class PlayerBattleController : MonoBehaviour
 {
@@ -13,9 +15,17 @@ public class PlayerBattleController : MonoBehaviour
     
     [Header("Sword Settings")]
     [SerializeField] private Animator animator;
-    private BoxCollider _registerDamageZone;
-
-
+    
+    [SerializeField] private Vector3 size = new Vector3(1f, 1f, 1f);
+    [SerializeField] private string detectionLayer = "Enemy";
+    [SerializeField] private Color gizmoColor = Color.red;
+    [SerializeField] private float offsetForward = 1f;
+    [SerializeField] private float offsetUp = 1f;
+    
+    private Vector3 _center;
+    
+    private HashSet<GameObject> _damagedEnemies = new HashSet<GameObject>();
+    
     void Start()
     {
         if (gameSettings)
@@ -24,28 +34,58 @@ public class PlayerBattleController : MonoBehaviour
             _speedAttack = gameSettings.playerSpeedAttack;
         }
         
-        _registerDamageZone = GetComponent<BoxCollider>();
-        _registerDamageZone.enabled = false;
-        
-        animator ??= GetComponent<Animator>();
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
         _timerAttack = _speedAttack;
+        
+        _center = transform.position + transform.forward * offsetForward;
+        _center = _center + transform.up * offsetUp;
     }
     
     void Update()
     {
         _timerAttack += Time.deltaTime;
         
+        _center = transform.position + transform.forward * offsetForward;
+        _center = _center + transform.up * offsetUp;
+
         if (Input.GetKeyDown(KeyCode.Mouse0) && _timerAttack >= _speedAttack)
         {
             Attack();
             _timerAttack = 0f;
         }
+
+        if (_isAttacking)
+        {
+            foreach (var other in CheckCollisions())
+            {
+                if (other.TryGetComponent(out EnemyHealth enemyHealth) && !_damagedEnemies.Contains(other.gameObject))
+                {
+                    enemyHealth.TakeDamage(_damage);
+                    AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordHitSound);
+                    _damagedEnemies.Add(other.gameObject);
+                }
+            }
+        }
     }
 
+    private Collider[] CheckCollisions()
+    {
+        return Physics.OverlapBox(_center, size / 2, Quaternion.identity, LayerMask.GetMask(detectionLayer));
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColor;
+        Gizmos.DrawWireCube(_center, size);
+    }
+    
     public void RegisterDamageEnable()
     {
-        _registerDamageZone.enabled = true;
         _isAttacking = true;
+        _damagedEnemies.Clear();
     }
     
     public void RegisterDamageDisable()
@@ -55,22 +95,12 @@ public class PlayerBattleController : MonoBehaviour
 
     private void RegisterDamageDisableWaitSeconds()
     {
-        _registerDamageZone.enabled = false;
         _isAttacking = false;
     }
     
     private void Attack()
     {
-        animator.SetTrigger("Attack");
+        animator?.SetTrigger("Attack");
         AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordAttackSound);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out EnemyHealth enemyHealth) && _isAttacking)
-        {
-            enemyHealth.TakeDamage(_damage);
-            AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordHitSound);
-        }
     }
 }

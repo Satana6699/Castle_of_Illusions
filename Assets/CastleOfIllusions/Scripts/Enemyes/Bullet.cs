@@ -13,7 +13,8 @@ public class Bullet : MonoBehaviour
 
     [Header("Particle Settings")]
     [SerializeField] private new ParticleSystem particleSystem = null;
-
+    [SerializeField] private Vector3 velocity = Vector3.forward;
+    
     private float _timerLive = 0f;
 
     private void Start()
@@ -35,7 +36,7 @@ public class Bullet : MonoBehaviour
             Death();
         }
         
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        transform.Translate(velocity * _speed * Time.deltaTime);
     }
 
     private void Death()

@@ -53,8 +53,12 @@ public class DartTrap : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            var bulletInstantiate = 
-                Instantiate(bullet, bulletStartPosition.transform.position, bulletStartPosition.transform.rotation);
+            var bulletInstantiate = Instantiate(
+                bullet, 
+                bulletStartPosition.transform.position,
+                bulletStartPosition.transform.rotation * Quaternion.Euler(0, 90, 0)
+            );
+
             _isActive = true;
             transform.position -= _offsetDartTrapInActvate;
         }

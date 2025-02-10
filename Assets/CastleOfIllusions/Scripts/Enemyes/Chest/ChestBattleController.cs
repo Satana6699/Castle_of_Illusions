@@ -9,12 +9,13 @@ public class ChestBattleController : MonoBehaviour
 
     private ChestController _movementController;
     private PlayerHealth _playerHealth;
+    private Collider _otherCollider;
     
     private void Start()
     {
         if (gameSettings)
         {
-            _damage = gameSettings.chairDamage;
+            _damage = gameSettings.chestDamage;
         }
         
         _movementController = GetComponent<ChestController>();
@@ -35,6 +36,8 @@ public class ChestBattleController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             
+            _otherCollider = other;
+            
             _playerHealth = other.gameObject.GetComponent<PlayerHealth>();
                 
             animator.SetBool("isAttacking", true);
@@ -54,6 +57,14 @@ public class ChestBattleController : MonoBehaviour
     {
         AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.chestAttackSound);
 
-        _playerHealth?.TakeDamage(_damage);
+        if (_otherCollider || _otherCollider.enabled)
+        {
+            _playerHealth?.TakeDamage(_damage);
+        }
+        else
+        {
+            _playerHealth = null;
+            _movementController?.StartMoving();
+        }
     }
 }

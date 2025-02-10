@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7830337155052544358}
   - component: {fileID: 1065726155443429625}
   - component: {fileID: 7334136456612291784}
-  - component: {fileID: 6966963335112747036}
   m_Layer: 0
   m_Name: ParticleSystemBoomBullet
   m_TagString: Untagged
@@ -44,7 +43,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 8.42
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -223,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.85265267, b: 0, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      minColor: {r: 0.4641509, g: 0.33257502, b: 0.14274827, a: 1}
+      maxColor: {r: 0.6830188, g: 0.3343479, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4898,15 +4897,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6966963335112747036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4728652046904813603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d78243a3dfb3df4e91714d09db6bce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
