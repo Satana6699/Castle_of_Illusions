@@ -36,11 +36,11 @@ public class SoundSettings : ScriptableObject
     public AudioClip flyingBookSound; //
 
     // 6 Звук атаки книги
-    public AudioClip attackBookSound; //
+    public AudioClip attackBookSound; //?
     
     [Header("Chest Sounds")]
     // 7 Звук укуса мимика
-    public AudioClip chestAttackSound;
+    public AudioClip chestAttackSound;//
 
     [Header("Chair Sounds")]
     // 9 Звук атаки табуретки
@@ -48,42 +48,42 @@ public class SoundSettings : ScriptableObject
 
     [Header("UI Sounds")]
     // 10 Звук взаимодействия с UI
-    public AudioClip uiInteractionSound;
+    public AudioClip uiInteractionSound; //
 
     // 11 Звук выигрыша
-    public AudioClip winSound;
+    public AudioClip winSound;//
     
     // 25? Звук деактивации ловушки шипов
-    public AudioClip deactivateSpikesTrapSound;
+    //public AudioClip deactivateSpikesTrapSound;
     
     [Header("Boss Sounds")]
     // 12 Звук передвижения котла
-    public AudioClip cauldronMovementSound;
+    public AudioClip cauldronMovementSound;//
 
     // 13 Звук дальней атаки кртла
-    public AudioClip distantAttackSound;
+    public AudioClip distantAttackSound;//
 
     // 14 Звук прыжка котла
-    public AudioClip boilerJumpSound;
+    public AudioClip boilerJumpSound;//
 
     // 15 Звук ближней атаки котла
-    public AudioClip boilerCloseAttackSound;
+    //public AudioClip boilerCloseAttackSound;
 
     // 26? Фоновая музыка босс-файта
-    public AudioClip bossFightBackgroundMusic;
+    //public AudioClip bossFightBackgroundMusic;
     
     [Header("trap Sounds")]
     //  16 Звук пилы
-    public AudioClip sawSound; 
+    public AudioClip sawSound; // 
 
     // 17 Звук шипов
-    public AudioClip spikesSound;
+    public AudioClip spikesSound; //
 
     //  18 Звук полёта дротиков
-    public AudioClip dartFlightSound;
+    public AudioClip dartFlightSound; //
 
     // 23 Звук открывания двери
-    public AudioClip doorOpenSound;
+    public AudioClip doorOpenSound; 
 
     // 24? Звук подъёма на лестнице
     public AudioClip ladderClimbSound;

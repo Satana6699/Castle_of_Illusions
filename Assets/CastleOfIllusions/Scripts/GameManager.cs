@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject vinnerMenu = null;
     [SerializeField] private GameObject mainMenu = null;
     [SerializeField] private GameObject pauseMenuUI = null;
+    [SerializeField] private GameObject settingsMenuUI = null;
     [SerializeField] private string nameFirstScene = "Forest";
     
     [SerializeField] private Slider masterVolumeSlider;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenuUI?.SetActive(false);
         noClickImage?.SetActive(false);
+        settingsMenuUI?.SetActive(false);
         _isPaused = false;
     }
     
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void Vinner()
     {
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.winSound, transform.position);
         Time.timeScale = 0f;
         vinnerMenu.SetActive(true);
     }
@@ -117,6 +120,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayCheckSound()
     {
-        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.playerMovementSound);
+        //AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.playerMovementSound);
     }
 }

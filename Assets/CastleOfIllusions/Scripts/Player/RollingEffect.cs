@@ -59,7 +59,8 @@ public class RollingEffect : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             SetRollState(true);
             
-            AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerRollSound);
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.playerRollSound,
+                transform.position);
 
             yield return new WaitForSeconds(rollDuration);
             SetRollState(false);

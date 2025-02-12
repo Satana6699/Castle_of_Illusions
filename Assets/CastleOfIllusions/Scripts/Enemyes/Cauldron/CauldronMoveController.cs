@@ -46,6 +46,7 @@ public class CauldronMoveController : MonoBehaviour
         var direction = new Vector3(_moveX, 0f, 0);
         _characterController.Move(direction * _moveSpeed * Time.deltaTime);
         
-        AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.cauldronMovementSound);
+        AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.cauldronMovementSound, 
+            transform.position);
     }
 }

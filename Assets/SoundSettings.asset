@@ -13,28 +13,26 @@ MonoBehaviour:
   m_Name: SoundSettings
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 6577ddf2689d054459d96e91e0a9df26, type: 3}
-  playerMovementSound: {fileID: 8300000, guid: 8de739a56da7f18409b7e8b34a905bde, type: 3}
+  playerMovementSound: {fileID: 8300000, guid: 7285dad4f7221244897a34f74a9680df, type: 3}
   playerJumpSound: {fileID: 8300000, guid: a367b837dc5545542aeaf2b44c4828ea, type: 3}
   swordAttackSound: {fileID: 8300000, guid: a9b33cbee41dce24785d8cc67b3f4c75, type: 3}
   swordHitSound: {fileID: 8300000, guid: c96dd9d4767da99428de72056eaab1cb, type: 3}
   playerDamageSound: {fileID: 8300000, guid: 78dce662cd9ef274b9471faa042a7202, type: 3}
   playerDeathSound: {fileID: 8300000, guid: 0b80af2f2e5c69f46b4b7b7850cbd952, type: 3}
   healthPickupSound: {fileID: 8300000, guid: eb19b64d7a9303d45836745989d48b22, type: 3}
-  playerRollSound: {fileID: 0}
-  flyingBookAttackSound: {fileID: 0}
-  attackBookSound: {fileID: 0}
-  mimicBiteSound: {fileID: 0}
-  chairAttackSound: {fileID: 0}
-  uiInteractionSound: {fileID: 0}
-  winSound: {fileID: 0}
-  deactivateSpikesTrapSound: {fileID: 0}
-  boilerMovementSound: {fileID: 0}
-  distantAttackSound: {fileID: 0}
-  boilerJumpSound: {fileID: 0}
-  boilerCloseAttackSound: {fileID: 0}
-  bossFightBackgroundMusic: {fileID: 0}
-  sawSound: {fileID: 0}
-  spikesSound: {fileID: 0}
-  dartFlightSound: {fileID: 0}
+  playerRollSound: {fileID: 8300000, guid: aa97b572ba142134b880036f947a714d, type: 3}
+  flyingBookSound: {fileID: 8300000, guid: 0706d7362b049cf4a9d6cd3240291eb9, type: 3}
+  attackBookSound: {fileID: 8300000, guid: 58c3d1a77e15bc441af9b1306e38c24e, type: 3}
+  chestAttackSound: {fileID: 8300000, guid: be92f9cc067429c4cad1e1eb60b2c930, type: 3}
+  chairAttackSound: {fileID: 8300000, guid: c5e25ccfc0dabc24f839ebf1e49efbf3, type: 3}
+  uiInteractionSound: {fileID: 8300000, guid: 216835cfaa9aaea4f969958218467ffa, type: 3}
+  winSound: {fileID: 8300000, guid: 02bd5f13bc9820a42aa80372077ae7bd, type: 3}
+  cauldronMovementSound: {fileID: 8300000, guid: d6e067445981a9a45b2cdf47f456c0b3,
+    type: 3}
+  distantAttackSound: {fileID: 8300000, guid: 6868c9e63139b8540b80f005c11bed28, type: 3}
+  boilerJumpSound: {fileID: 8300000, guid: 90c48b47034d5e445b7a1f23121f9a86, type: 3}
+  sawSound: {fileID: 8300000, guid: 5b913d4456f58fb4cb399ea035f88af2, type: 3}
+  spikesSound: {fileID: 8300000, guid: 6926589392a1c6b4a8fb621e53df60f1, type: 3}
+  dartFlightSound: {fileID: 8300000, guid: 98d90979639bbe2428ed34ea394889b2, type: 3}
   doorOpenSound: {fileID: 0}
   ladderClimbSound: {fileID: 0}

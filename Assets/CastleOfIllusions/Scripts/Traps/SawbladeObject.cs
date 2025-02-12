@@ -15,6 +15,8 @@ public class SawbladeObject : MonoBehaviour
 
     private Tween _tween = null;
     private Vector3 _rotation = Vector3.zero;
+
+    private float _timerForSound = 0f;
     
     void Start()
     {
@@ -46,6 +48,14 @@ public class SawbladeObject : MonoBehaviour
     {
         transform.position += Vector3.right * _moveInput * _speedMove * Time.deltaTime;
         
+        _timerForSound += Time.deltaTime;
+        
+        if (_timerForSound >= AudioManager.Instance?.soundSettings.sawSound.length)
+        {
+            AudioManager.Instance?.PlaySFXOverride(AudioManager.Instance?.soundSettings.sawSound,
+                transform.position);
+            _timerForSound = 0f;
+        }
     }
     
     private void TurnRotate()

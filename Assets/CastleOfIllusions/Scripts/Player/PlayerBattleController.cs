@@ -64,7 +64,8 @@ public class PlayerBattleController : MonoBehaviour
                 if (other.TryGetComponent(out EnemyHealth enemyHealth) && !_damagedEnemies.Contains(other.gameObject))
                 {
                     enemyHealth.TakeDamage(_damage);
-                    AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordHitSound);
+                    AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordHitSound, 
+                        transform.position);
                     _damagedEnemies.Add(other.gameObject);
                 }
             }
@@ -101,6 +102,7 @@ public class PlayerBattleController : MonoBehaviour
     private void Attack()
     {
         animator?.SetTrigger("Attack");
-        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordAttackSound);
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.swordAttackSound, 
+            transform.position);
     }
 }

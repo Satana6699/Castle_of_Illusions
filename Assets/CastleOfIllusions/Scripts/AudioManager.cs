@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour
     private AudioSource _musicSource;
     private List<AudioSource> _sfxSources = new List<AudioSource>();
     private Dictionary<string, AudioSource> _activeSounds = new Dictionary<string, AudioSource>();
+    [SerializeField] private float minDistanceMusic = 1f;
+    [SerializeField] private float maxDistanceMusic = 7f;
+    
     
     private float _masterVolume = 1f;
     private float _musicVolume = 1f;
@@ -44,24 +47,25 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip music)
     {
-        if (_musicSource.clip == music) return;
+        if (_musicSource.clip == music || _musicSource.clip) return;
 
         _musicSource.clip = music;
         _musicSource.volume = _musicVolume * _masterVolume;
         _musicSource.Play();
     }
 
-    public void PlaySFX(AudioClip sound)
+    public void PlaySFX(AudioClip sound, Vector3 position)
     {
         if (sound == null) return;
 
-        AudioSource source = GetFreeAudioSource();
+        AudioSource source = GetFreeAudioSource(position);
+        source.transform.position = position;
         source.clip = sound;
         source.volume = _sfxVolume * _masterVolume;
         source.Play();
     }
 
-    public void PlaySFXOverride(AudioClip sound)
+    public void PlaySFXOverride(AudioClip sound, Vector3 position)
     {
         if (sound == null) return;
 
@@ -70,21 +74,21 @@ public class AudioManager : MonoBehaviour
         if (_activeSounds.ContainsKey(soundName))
         {
             _activeSounds[soundName].Stop();
+            _activeSounds[soundName].transform.position = position;
             _activeSounds[soundName].clip = sound;
             _activeSounds[soundName].volume = _sfxVolume * _masterVolume;
             _activeSounds[soundName].Play();
         }
         else
         {
-            AudioSource source = GetFreeAudioSource();
+            AudioSource source = GetFreeAudioSource(position);
             source.clip = sound;
-            source.volume = _sfxVolume * _masterVolume;
             source.Play();
             _activeSounds[soundName] = source;
         }
     }
 
-    public void PlaySFXNoRepeat(AudioClip sound)
+    public void PlaySFXNoRepeat(AudioClip sound, Vector3 position)
     {
         if (sound == null) return;
 
@@ -92,17 +96,17 @@ public class AudioManager : MonoBehaviour
 
         if (_activeSounds.ContainsKey(soundName) && _activeSounds[soundName].isPlaying)
         {
+            _activeSounds[soundName].transform.position = position;
             return;
         }
 
-        AudioSource source = GetFreeAudioSource();
+        AudioSource source = GetFreeAudioSource(position);
         source.clip = sound;
-        source.volume = _sfxVolume * _masterVolume;
         source.Play();
         _activeSounds[soundName] = source;
     }
 
-    private AudioSource GetFreeAudioSource()
+    private AudioSource GetFreeAudioSource(Vector3 position)
     {
         foreach (var source in _sfxSources)
         {
@@ -111,11 +115,12 @@ public class AudioManager : MonoBehaviour
         }
 
         AudioSource newSource = gameObject.AddComponent<AudioSource>();
+        newSource.volume = _sfxVolume * _masterVolume;
         _sfxSources.Add(newSource);
         return newSource;
     }
 
-    // общую громкость
+    // общая громкость
     public void SetMasterVolume(float volume)
     {
         _masterVolume = volume;

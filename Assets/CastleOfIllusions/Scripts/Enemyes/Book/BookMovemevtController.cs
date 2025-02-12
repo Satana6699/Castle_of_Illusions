@@ -48,7 +48,8 @@ public class BockMovemevtController : MonoBehaviour
 
     void Update()
     {
-        AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.flyingBookSound);
+        AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance.soundSettings.flyingBookSound, 
+            transform.position);
     }
     
     private void NewRandomValue()
@@ -82,5 +83,11 @@ public class BockMovemevtController : MonoBehaviour
     void OnDestroy()
     {
         _tween?.Kill();
+    }
+
+    public void PlayFlySound()
+    {
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.flyingBookSound,
+            transform.position);
     }
 }

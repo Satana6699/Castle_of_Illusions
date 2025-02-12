@@ -55,10 +55,11 @@ public class ChestBattleController : MonoBehaviour
     
     public void DamagePlayer()
     {
-        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.chestAttackSound);
 
         if (_otherCollider || _otherCollider.enabled)
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.chestAttackSound, 
+                transform.position);
             _playerHealth?.TakeDamage(_damage);
         }
         else

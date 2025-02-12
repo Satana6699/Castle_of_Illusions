@@ -56,7 +56,8 @@ public class ChairBattleController : MonoBehaviour
 
     public void DamagePlayer()
     {
-        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.chairAttackSound);
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.chairAttackSound, 
+            transform.position);
 
         _playerHealth?.TakeDamage(_damage);
     }

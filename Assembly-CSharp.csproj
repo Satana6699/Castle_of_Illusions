@@ -62,6 +62,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\Princessa.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\OpenTelegram.cs" />
+    <Compile Include="Assets\ButtonSound.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chest\ChestBattleController.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Bullet.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\AccessoryWearLogic.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\CastleOfIllusions\Scripts\SoundSettings.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Enemyes\Chair\ChairBattleController.cs" />
     <Compile Include="Assets\Red Nebula Studios\RNLowPolyDungeonLite\Scenes\Demo Scripts\ActivateProp.cs" />
+    <Compile Include="Assets\TargetMove.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\GameSettings.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\GameManager.cs" />
     <Compile Include="Assets\CastleOfIllusions\Scripts\Player\PlayerBattleController.cs" />

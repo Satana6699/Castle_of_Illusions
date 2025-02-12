@@ -30,6 +30,8 @@ namespace CastleOfIllusions.Scripts
 
         private void ActivateSpike()
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.spikesSound, 
+                transform.position);
             animator.SetTrigger("Spike");
         }
     }

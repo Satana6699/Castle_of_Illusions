@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
         private bool _isGrounded = false;
         private float _moveX = 0;
         private bool _facingRight  = true;
+
+        private float _timerSound = 0f;
         
         private void Start()
         {
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
         private void Update()
         {
+            _timerSound += Time.deltaTime;
+            
             _isGrounded = _controller.isGrounded;
 
             if (_isGrounded && _velocity.y < 0)
@@ -44,7 +48,12 @@ public class PlayerController : MonoBehaviour
             
             if (_moveX != 0 && _isGrounded)
             {
-                AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerMovementSound);
+                if (_timerSound > AudioManager.Instance?.soundSettings.playerMovementSound.length)
+                {
+                    AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.playerMovementSound,
+                        transform.position);
+                    _timerSound = 0;
+                }
             }
             
             Move();
@@ -80,7 +89,8 @@ public class PlayerController : MonoBehaviour
             if (_isGrounded && Input.GetButtonDown("Jump"))
             {
                 _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravityForce);
-                AudioManager.Instance?.PlaySFXNoRepeat(AudioManager.Instance?.soundSettings.playerJumpSound);
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.playerJumpSound, 
+                    transform.position);
             }
         }
         

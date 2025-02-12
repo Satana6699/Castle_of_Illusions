@@ -53,6 +53,9 @@ public class DartTrap : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.dartFlightSound, 
+                transform.position);
+            
             var bulletInstantiate = Instantiate(
                 bullet, 
                 bulletStartPosition.transform.position,

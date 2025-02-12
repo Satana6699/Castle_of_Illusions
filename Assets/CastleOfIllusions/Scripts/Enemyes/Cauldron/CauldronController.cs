@@ -64,10 +64,14 @@ public class CauldronController : MonoBehaviour
         {
             if (distance >= _distanceForDistanceAttack)
             {
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.distantAttackSound, 
+                    transform.position);
                 StartCoroutine(_attack.SpawnBomb());
             }
             else
             {
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance?.soundSettings.boilerJumpSound, 
+                    transform.position);
                 StartCoroutine(_jumpAttack.Jump());
             }
 
